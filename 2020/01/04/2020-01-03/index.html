@@ -15,8 +15,15 @@
 <meta property="og:description" content="오늘의 개발어제 작업하던 것 마저 작성했음. 마무리는 못함 작업한 내용어제랑 같은 작업을 했는데, 어제 마저 못채운 곡률 처리, 슬로프 처리하는 부분을 작성하다가 끝남! 대청소하느라 시간이 별로 없었다. 공부해야하는 내용매트랩에서 배열 슬라이싱 하는걸 진짜 너무 많이 해놔서, 관련된 함수를 짜거나 해야할 것 같음. 어떤식으로 짜야할지 고민 좀 해야할 것 같">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-03T21:34:17.000Z">
-<meta property="article:modified_time" content="2020-01-05T05:06:30.161Z">
+<meta property="article:modified_time" content="2020-01-05T05:14:33.955Z">
 <meta property="article:author" content="Sunbin Vincent Kim">
+<meta property="article:tag" content="Matlab">
+<meta property="article:tag" content="Simulink">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="index slicing">
+<meta property="article:tag" content="pointer">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="SB-Dev-Note" type="application/atom+xml">
@@ -51,8 +58,6 @@
           <a class="main-nav-link" href="/">Home</a>
         
           <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categories">Category</a>
         
       </nav>
       <nav id="sub-nav">
@@ -106,6 +111,8 @@
       <a data-url="http://yoursite.com/2020/01/04/2020-01-03/" data-id="ck50ized10001mjjdg2pa7neo" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li></ul>
+
     </footer>
   </div>
   
@@ -178,9 +185,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/array/" style="font-size: 15px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/matlab/" style="font-size: 20px;">Matlab</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 20px;">Simulink</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/pointer/" style="font-size: 10px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -210,8 +231,6 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Category</a>
   
 </nav>
     
