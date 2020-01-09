@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>[05] 구조체와 포인터 (struct and pointer) | SB-Dev-Note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="구조체 포인터 사용하기참고 문헌 (Ch 49) : https:&#x2F;&#x2F;dojang.io&#x2F;mod&#x2F;page&#x2F;view.php?id&#x3D;418 구조체 포인터를 선언하고 메모리 할당하기다른 자료형과 마찬가지로 malloc 함수를 이용하여 동적 메모리 할당할당하는 방법: struct 구조체이름 (*포인터이름) &#x3D; malloc(sizeof(struct 구조체 이름));예시 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[05] 구조체와 포인터 (struct and pointer)">
+<meta property="og:url" content="http://yoursite.com/2020/01/10/c-05-struct-pointer/index.html">
+<meta property="og:site_name" content="SB-Dev-Note">
+<meta property="og:description" content="구조체 포인터 사용하기참고 문헌 (Ch 49) : https:&#x2F;&#x2F;dojang.io&#x2F;mod&#x2F;page&#x2F;view.php?id&#x3D;418 구조체 포인터를 선언하고 메모리 할당하기다른 자료형과 마찬가지로 malloc 함수를 이용하여 동적 메모리 할당할당하는 방법: struct 구조체이름 (*포인터이름) &#x3D; malloc(sizeof(struct 구조체 이름));예시 12">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-09T15:03:33.000Z">
+<meta property="article:modified_time" content="2020-01-09T15:04:57.291Z">
+<meta property="article:author" content="Sunbin Vincent Kim">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="pointer">
+<meta property="article:tag" content="struct">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="SB-Dev-Note" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SB-Dev-Note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c-05-struct-pointer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/10/c-05-struct-pointer/" class="article-date">
+  <time datetime="2020-01-09T15:03:33.000Z" itemprop="datePublished">2020-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/c/">C</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [05] 구조체와 포인터 (struct and pointer)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="구조체-포인터-사용하기"><a href="#구조체-포인터-사용하기" class="headerlink" title="구조체 포인터 사용하기"></a>구조체 포인터 사용하기</h1><p>참고 문헌 (Ch 49) : <a href="https://dojang.io/mod/page/view.php?id=418" target="_blank" rel="noopener">https://dojang.io/mod/page/view.php?id=418</a></p>
+<h2 id="구조체-포인터를-선언하고-메모리-할당하기"><a href="#구조체-포인터를-선언하고-메모리-할당하기" class="headerlink" title="구조체 포인터를 선언하고 메모리 할당하기"></a>구조체 포인터를 선언하고 메모리 할당하기</h2><h3 id="다른-자료형과-마찬가지로-malloc-함수를-이용하여-동적-메모리-할당"><a href="#다른-자료형과-마찬가지로-malloc-함수를-이용하여-동적-메모리-할당" class="headerlink" title="다른 자료형과 마찬가지로 malloc 함수를 이용하여 동적 메모리 할당"></a>다른 자료형과 마찬가지로 malloc 함수를 이용하여 동적 메모리 할당</h3><h3 id="할당하는-방법-struct-구조체이름-포인터이름-malloc-sizeof-struct-구조체-이름"><a href="#할당하는-방법-struct-구조체이름-포인터이름-malloc-sizeof-struct-구조체-이름" class="headerlink" title="할당하는 방법: struct 구조체이름 (*포인터이름) = malloc(sizeof(struct 구조체 이름));"></a>할당하는 방법: struct 구조체이름 (*포인터이름) = malloc(sizeof(struct 구조체 이름));</h3><p>예시</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;    // strcpy 함수가 선언된 헤더 파일</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;    // malloc, free 함수가 선언된 헤더 파일</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span>    <span class="comment">// 구조체 정의</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];        <span class="comment">// 구조체 멤버 1</span></span><br><span class="line">    <span class="keyword">int</span> age;              <span class="comment">// 구조체 멤버 2</span></span><br><span class="line">    <span class="keyword">char</span> address[<span class="number">100</span>];    <span class="comment">// 구조체 멤버 3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> *<span class="title">p1</span> = <span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">Person</span>));</span>    <span class="comment">// 구조체 포인터 선언, 메모리 할당</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 화살표 연산자로 구조체 멤버에 접근하여 값 할당</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p1-&gt;name, <span class="string">"홍길동"</span>);</span><br><span class="line">    p1-&gt;age = <span class="number">30</span>;</span><br><span class="line">    <span class="built_in">strcpy</span>(p1-&gt;address, <span class="string">"서울시 용산구 한남동"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 화살표 연산자로 구조체 멤버에 접근하여 값 출력</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"이름: %s\n"</span>, p1-&gt;name);       <span class="comment">// 홍길동</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"나이: %d\n"</span>, p1-&gt;age);        <span class="comment">// 30</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"주소: %s\n"</span>, p1-&gt;address);    <span class="comment">// 서울시 용산구 한남동</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(p1);    <span class="comment">// 동적 메모리 해제</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="참고-구조체의-멤버가-포인터일-때-역참조를-하려면-맨-앞에-를-붙여야-함-이-때-구조체-변수-앞에-가-붙어있더라도-멤버의-역참조이지-구조체-변수의-역참조가-아님"><a href="#참고-구조체의-멤버가-포인터일-때-역참조를-하려면-맨-앞에-를-붙여야-함-이-때-구조체-변수-앞에-가-붙어있더라도-멤버의-역참조이지-구조체-변수의-역참조가-아님" class="headerlink" title="참고: 구조체의 멤버가 포인터일 때 역참조를 하려면 맨 앞에 *를 붙여야 함. 이 때 구조체 변수 앞에 *가 붙어있더라도 멤버의 역참조이지 구조체 변수의 역참조가 아님."></a>참고: 구조체의 멤버가 포인터일 때 역참조를 하려면 맨 앞에 *를 붙여야 함. 이 때 구조체 변수 앞에 *가 붙어있더라도 멤버의 역참조이지 구조체 변수의 역참조가 아님.</h3><p>예시</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Data</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> c1;</span><br><span class="line">    <span class="keyword">int</span> *numPtr;    <span class="comment">// 포인터</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num1 = <span class="number">10</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Data</span> <span class="title">d1</span>;</span>    <span class="comment">// 구조체 변수</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Data</span> *<span class="title">d2</span> = <span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">Data</span>));</span>    <span class="comment">// 구조체 포인터에 메모리 할당</span></span><br><span class="line"></span><br><span class="line">    d1.numPtr = &amp;num1; <span class="comment">// d1의 numPtr에 &amp;num1을 할당</span></span><br><span class="line">    d2-&gt;numPtr = &amp;num1; <span class="comment">// d2의 numPtr에 &amp;num1을 할당</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *d1.numPtr);     <span class="comment">// 10: 구조체의 멤버를 역참조</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *d2-&gt;numPtr);    <span class="comment">// 10: 구조체 포인터의 멤버를 역참조</span></span><br><span class="line"></span><br><span class="line">    d2-&gt;c1 = <span class="string">'a'</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c\n"</span>, (*d2).c1);      <span class="comment">//  a: 구조체 포인터를 역참조하여 c1에 접근</span></span><br><span class="line">                                   <span class="comment">// d2-&gt;c1과 같음</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *(*d2).numPtr); <span class="comment">// 10: 구조체 포인터를 역참조하여 numPtr에 접근한 뒤 다시 역참조</span></span><br><span class="line">                                   <span class="comment">// *d2-&gt;numPtr과 같음</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, d2-&gt;numPtr);     <span class="comment">// 비교를 위한 코드</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *d2-&gt;numPtr);    <span class="comment">// 비교를 위한 코드</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(d2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="구조체-별칭으로-포인터를-선언하고-메모리-할당하기"><a href="#구조체-별칭으로-포인터를-선언하고-메모리-할당하기" class="headerlink" title="구조체 별칭으로 포인터를 선언하고 메모리 할당하기"></a>구조체 별칭으로 포인터를 선언하고 메모리 할당하기</h2><h3 id="구조체-별칭을-이용하여-구조체-포인터의-메모리-할당-방법-구조체-별칭-포인터-이름-malloc-sizeof-구조체-별칭"><a href="#구조체-별칭을-이용하여-구조체-포인터의-메모리-할당-방법-구조체-별칭-포인터-이름-malloc-sizeof-구조체-별칭" class="headerlink" title="구조체 별칭을 이용하여 구조체 포인터의 메모리 할당 방법: (구조체 별칭) (*포인터 이름) = malloc(sizeof(구조체 별칭))"></a>구조체 별칭을 이용하여 구조체 포인터의 메모리 할당 방법: (구조체 별칭) (*포인터 이름) = malloc(sizeof(구조체 별칭))</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;    // strcpy 함수가 선언된 헤더 파일</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;    // malloc, free 함수가 선언된 헤더 파일</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">Person</span> &#123;</span>    <span class="comment">// 구조체 이름은 _Person</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];             <span class="comment">// 구조체 멤버 1</span></span><br><span class="line">    <span class="keyword">int</span> age;                   <span class="comment">// 구조체 멤버 2</span></span><br><span class="line">    <span class="keyword">char</span> address[<span class="number">100</span>];         <span class="comment">// 구조체 멤버 3</span></span><br><span class="line">&#125; Person;                   <span class="comment">// typedef를 사용하여 구조체 별칭을 Person으로 정의</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Person *p1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Person));    <span class="comment">// 구조체 별칭으로 포인터 선언, 메모리 할당</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 화살표 연산자로 구조체 멤버에 접근하여 값 할당</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p1-&gt;name, <span class="string">"홍길동"</span>);</span><br><span class="line">    p1-&gt;age = <span class="number">30</span>;</span><br><span class="line">    <span class="built_in">strcpy</span>(p1-&gt;address, <span class="string">"서울시 용산구 한남동"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 화살표 연산자로 구조체 멤버에 접근하여 값 출력</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"이름: %s\n"</span>, p1-&gt;name);       <span class="comment">// 홍길동</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"나이: %d\n"</span>, p1-&gt;age);        <span class="comment">// 30</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"주소: %s\n"</span>, p1-&gt;address);    <span class="comment">// 서울시 용산구 한남동</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(p1);    <span class="comment">// 동적 메모리 해제</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="구조체-포인터에-구조체-변수의-주소-할당하기"><a href="#구조체-포인터에-구조체-변수의-주소-할당하기" class="headerlink" title="구조체 포인터에 구조체 변수의 주소 할당하기"></a>구조체 포인터에 구조체 변수의 주소 할당하기</h2><h3 id="동적-메모리를-할당하지-않고-구조체-포인터를-사용하는-방법-구조체-포인터-amp-구조체-변수"><a href="#동적-메모리를-할당하지-않고-구조체-포인터를-사용하는-방법-구조체-포인터-amp-구조체-변수" class="headerlink" title="동적 메모리를 할당하지 않고 구조체 포인터를 사용하는 방법: (구조체 포인터) = (&amp;구조체 변수)"></a>동적 메모리를 할당하지 않고 구조체 포인터를 사용하는 방법: (구조체 포인터) = (&amp;구조체 변수)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span>    <span class="comment">// 구조체 정의</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];        <span class="comment">// 구조체 멤버 1</span></span><br><span class="line">    <span class="keyword">int</span> age;              <span class="comment">// 구조체 멤버 2</span></span><br><span class="line">    <span class="keyword">char</span> address[<span class="number">100</span>];    <span class="comment">// 구조체 멤버 3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> <span class="title">p1</span>;</span>      <span class="comment">// 구조체 변수 선언</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> *<span class="title">ptr</span>;</span>    <span class="comment">// 구조체 포인터 선언</span></span><br><span class="line"></span><br><span class="line">    ptr = &amp;p1;    <span class="comment">// p1의 메모리 주소를 구하여 ptr에 할당</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 화살표 연산자로 구조체 멤버에 접근하여 값 할당</span></span><br><span class="line">    ptr-&gt;age = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"나이: %d\n"</span>, p1.age);      <span class="comment">// 나이: 30: 구조체 변수의 멤버 값 출력</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"나이: %d\n"</span>, ptr-&gt;age);    <span class="comment">// 나이: 30: 구조체 포인터의 멤버 값 출력</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/10/c-05-struct-pointer/" data-id="ck56v56hd0008irjd47qvcxd3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struct/" rel="tag">struct</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/10/c-04-struct-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[04] 구조체 (struct)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/00-diary/">00_Diary</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/00-diary/dailydev/">DailyDev.</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/">01_Study</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/c/">C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/python/">Python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/99-etc/">99_ETC</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/99-etc/test/">Test</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/10/c-05-struct-pointer/">[05] 구조체와 포인터 (struct and pointer)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/10/c-04-struct-basic/">[04] 구조체 (struct)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/09/c-03-array-pointer/">[03] 배열과 포인터(Array and Pointer)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/09/c-02-array-2d/">[02] 2차원 배열(2D Array)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/09/c-01-array-1d/">[01] 1차원 배열(1D Array)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/array/" style="font-size: 18px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 16px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 16px;">CodeSignal</a> <a href="/tags/matlab/" style="font-size: 14px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 14px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 16px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 14px;">Simulink</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/pointer/" style="font-size: 12px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 12px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Sunbin Vincent Kim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

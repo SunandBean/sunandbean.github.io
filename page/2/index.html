@@ -64,6 +64,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2020-01-06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/07/2020-01-06/" class="article-date">
+  <time datetime="2020-01-06T15:27:58.000Z" itemprop="datePublished">2020-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/07/2020-01-06/">2020.01.06</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>오늘도 역시나 개발을 안했다!<br>내일 있을 만도 면접 준비도 있고, 이번 방학부터 다음 달에 있을 산학 과제 최종 발표 회의, 그리고 월마다 제출하는 연구 내용을 작성했다.</p>
+<p>또, 논문을 어떻게 쓸 지에 대한 아웃라인 고민도 하고, 1월달의 계획도 수립했다.</p>
+<p>점심먹고 졸릴 때 파이썬 코드 파이트를 했는데, 한 문제는 굉장히 쉽게 풀려서 금방 해결했는데, 한 문제가 너무 풀리지 않아서 그냥 해설집을 봤다.</p>
+<p>문제를 보는데 도저히 어떻게 구현해야할 지 생각이 안나서 시행착오로 해결할까 했는데, 그게 잘 안되서 그냥 답을 본 것이었다.</p>
+<p>내일의 면접이 끝나면 개발해야할 일들이 산더미처럼 쌓여있기 때문에, 아마 수요일부터는 제대로 개발 일지가 올라가지 않을까 싶다!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/07/2020-01-06/" data-id="ck52lr4mi0000ezjdc5jyadrk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pythoncodefight-day2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/pythoncodefight-day2/" class="article-date">
+  <time datetime="2020-01-06T14:13:24.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/pythoncodefight-day2/">PythonCodeFight-Day2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day_2"></a>Day_2</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><h2 id="Q6-Make-Array-Consecutive-2"><a href="#Q6-Make-Array-Consecutive-2" class="headerlink" title="Q6. Make Array Consecutive 2"></a>Q6. Make Array Consecutive 2</h2><p>Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative integer size. Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue will be bigger than the previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help him figure out the minimum number of additional statues needed.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeArrayConsecutive2</span><span class="params">(statues)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> ((max(statues) - min(statues) +<span class="number">1</span>) - len(statues))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Q7-almostIncreasingSequence"><a href="#Q7-almostIncreasingSequence" class="headerlink" title="Q7. almostIncreasingSequence"></a>Q7. almostIncreasingSequence</h2><p>Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing sequence by removing no more than one element from the array.</p>
+<p><em>Note:</em> sequence <code>a0</code>, <code>a1</code>, …, <code>an</code> is considered to be a strictly increasing if <code>a0 &lt; a1 &lt; ... &lt; an</code>. Sequence containing only one element is also considered to be strictly increasing.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 못 풀겠어서 솔루션을 가져왔음 pharfenmeister의 솔루션</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">almostIncreasingSequence</span><span class="params">(sequence)</span>:</span></span><br><span class="line">    droppped = <span class="literal">False</span></span><br><span class="line">    last = prev = min(sequence) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> elm <span class="keyword">in</span> sequence:</span><br><span class="line">        <span class="keyword">if</span> elm &lt;= last:</span><br><span class="line">            <span class="keyword">if</span> droppped:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                droppped = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> elm &lt;= prev:</span><br><span class="line">                prev = last</span><br><span class="line">            <span class="keyword">elif</span> elm &gt;= prev:</span><br><span class="line">                prev = last = elm</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            prev, last = last, elm</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>못 푼 이유: 조건이 잘 그려지지 않음</p>
+<p>고민한 시간: 1시간 고민</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/06/pythoncodefight-day2/" data-id="ck52izvdf0000i7jd80urbd9q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-01-05" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/06/2020-01-05/" class="article-date">
@@ -483,23 +579,23 @@
       <ul>
         
           <li>
-            <a href="/2020/01/09/c-03-arraypointer/">[03] 배열과 포인터(Array and Pointer)</a>
+            <a href="/2020/01/10/c-05-struct-pointer/">[05] 구조체와 포인터 (struct and pointer)</a>
           </li>
         
           <li>
-            <a href="/2020/01/09/c-02-2d-array/">[02] 2차원 배열(2D Array)</a>
+            <a href="/2020/01/10/c-04-struct-basic/">[04] 구조체 (struct)</a>
           </li>
         
           <li>
-            <a href="/2020/01/09/c-01-1d-array/">[01] 1차원 배열(1D Array)</a>
+            <a href="/2020/01/09/c-03-array-pointer/">[03] 배열과 포인터(Array and Pointer)</a>
           </li>
         
           <li>
-            <a href="/2020/01/09/2020-01-09/">2020.01.09</a>
+            <a href="/2020/01/09/c-02-array-2d/">[02] 2차원 배열(2D Array)</a>
           </li>
         
           <li>
-            <a href="/2020/01/09/pythoncodefight-day4/">PythonCodeFight-Day4</a>
+            <a href="/2020/01/09/c-01-array-1d/">[01] 1차원 배열(1D Array)</a>
           </li>
         
       </ul>
@@ -511,7 +607,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
     </div>
   </div>
 
@@ -521,7 +617,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/array/" style="font-size: 17.5px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 15px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 15px;">CodeSignal</a> <a href="/tags/matlab/" style="font-size: 12.5px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.5px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 15px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.5px;">Simulink</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/pointer/" style="font-size: 10px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+      <a href="/tags/array/" style="font-size: 18px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 16px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 16px;">CodeSignal</a> <a href="/tags/matlab/" style="font-size: 14px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 14px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 16px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 14px;">Simulink</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/pointer/" style="font-size: 12px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 12px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
     </div>
   </div>
 
