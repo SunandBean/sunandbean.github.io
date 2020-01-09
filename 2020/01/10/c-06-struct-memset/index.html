@@ -5,17 +5,17 @@
   
 
   
-  <title>[06]구조체 멤버값 설정 (memset) | SB-Dev-Note</title>
+  <title>[06] 구조체 멤버값 설정 (memset) | SB-Dev-Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C언어 구조체 정리구조체와 메모리 활용하기참고 문헌 (Ch 52): https:&#x2F;&#x2F;dojang.io&#x2F;mod&#x2F;page&#x2F;view.php?id&#x3D;438 구조체와 메모리를 간단하게 0으로 설정하기구조체 변수나 메모리의 내용을 한꺼번에 값을 설정하려면 memset 함수를 사용 memset(구조체 포인터, 설정할 값, sizeof(struct 구조체이름))예시 - 구조">
+  <meta name="description" content="구조체와 메모리 활용하기참고 문헌 (Ch 52): https:&#x2F;&#x2F;dojang.io&#x2F;mod&#x2F;page&#x2F;view.php?id&#x3D;438 구조체와 메모리를 간단하게 0으로 설정하기구조체 변수나 메모리의 내용을 한꺼번에 값을 설정하려면 memset 함수를 사용 memset(구조체 포인터, 설정할 값, sizeof(struct 구조체이름))예시 - 구조체 변수를 이용 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[06]구조체 멤버값 설정 (memset)">
+<meta property="og:title" content="[06] 구조체 멤버값 설정 (memset)">
 <meta property="og:url" content="http://yoursite.com/2020/01/10/c-06-struct-memset/index.html">
 <meta property="og:site_name" content="SB-Dev-Note">
-<meta property="og:description" content="C언어 구조체 정리구조체와 메모리 활용하기참고 문헌 (Ch 52): https:&#x2F;&#x2F;dojang.io&#x2F;mod&#x2F;page&#x2F;view.php?id&#x3D;438 구조체와 메모리를 간단하게 0으로 설정하기구조체 변수나 메모리의 내용을 한꺼번에 값을 설정하려면 memset 함수를 사용 memset(구조체 포인터, 설정할 값, sizeof(struct 구조체이름))예시 - 구조">
+<meta property="og:description" content="구조체와 메모리 활용하기참고 문헌 (Ch 52): https:&#x2F;&#x2F;dojang.io&#x2F;mod&#x2F;page&#x2F;view.php?id&#x3D;438 구조체와 메모리를 간단하게 0으로 설정하기구조체 변수나 메모리의 내용을 한꺼번에 값을 설정하려면 memset 함수를 사용 memset(구조체 포인터, 설정할 값, sizeof(struct 구조체이름))예시 - 구조체 변수를 이용 1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-09T15:05:21.000Z">
-<meta property="article:modified_time" content="2020-01-09T15:06:16.308Z">
+<meta property="article:modified_time" content="2020-01-09T15:08:06.968Z">
 <meta property="article:author" content="Sunbin Vincent Kim">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="pointer">
@@ -88,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      [06]구조체 멤버값 설정 (memset)
+      [06] 구조체 멤버값 설정 (memset)
     </h1>
   
 
@@ -96,7 +96,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C언어-구조체-정리"><a href="#C언어-구조체-정리" class="headerlink" title="C언어 구조체 정리"></a>C언어 구조체 정리</h1><h1 id="구조체와-메모리-활용하기"><a href="#구조체와-메모리-활용하기" class="headerlink" title="구조체와 메모리 활용하기"></a>구조체와 메모리 활용하기</h1><p>참고 문헌 (Ch 52): <a href="https://dojang.io/mod/page/view.php?id=438" target="_blank" rel="noopener">https://dojang.io/mod/page/view.php?id=438</a></p>
+        <h1 id="구조체와-메모리-활용하기"><a href="#구조체와-메모리-활용하기" class="headerlink" title="구조체와 메모리 활용하기"></a>구조체와 메모리 활용하기</h1><p>참고 문헌 (Ch 52): <a href="https://dojang.io/mod/page/view.php?id=438" target="_blank" rel="noopener">https://dojang.io/mod/page/view.php?id=438</a></p>
 <h2 id="구조체와-메모리를-간단하게-0으로-설정하기"><a href="#구조체와-메모리를-간단하게-0으로-설정하기" class="headerlink" title="구조체와 메모리를 간단하게 0으로 설정하기"></a>구조체와 메모리를 간단하게 0으로 설정하기</h2><p>구조체 변수나 메모리의 내용을 한꺼번에 값을 설정하려면 memset 함수를 사용</p>
 <h3 id="memset-구조체-포인터-설정할-값-sizeof-struct-구조체이름"><a href="#memset-구조체-포인터-설정할-값-sizeof-struct-구조체이름" class="headerlink" title="memset(구조체 포인터, 설정할 값, sizeof(struct 구조체이름))"></a>memset(구조체 포인터, 설정할 값, sizeof(struct 구조체이름))</h3><p>예시 - 구조체 변수를 이용</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;    // memset 함수가 선언된 헤더 파일</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point2D</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Point2D</span> <span class="title">p1</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(&amp;p1, <span class="number">0</span>, <span class="keyword">sizeof</span>(struct Point2D));    <span class="comment">// p1을 구조체 크기만큼 0으로 설정</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, p1.x, p1.y);    <span class="comment">// 0 0: memset을 사용하여 0으로 설정했으므로</span></span><br><span class="line">                                      <span class="comment">// x, y 모두 0</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -120,6 +120,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/01/10/c-07-struct-array/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [07] 구조체 배열 (struct array)
+        
+      </div>
+    </a>
   
   
     <a href="/2020/01/10/c-05-struct-pointer/" id="article-nav-older" class="article-nav-link-wrap">
@@ -153,7 +162,11 @@
       <ul>
         
           <li>
-            <a href="/2020/01/10/c-06-struct-memset/">[06]구조체 멤버값 설정 (memset)</a>
+            <a href="/2020/01/10/c-07-struct-array/">[07] 구조체 배열 (struct array)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/10/c-06-struct-memset/">[06] 구조체 멤버값 설정 (memset)</a>
           </li>
         
           <li>
@@ -168,10 +181,6 @@
             <a href="/2020/01/09/c-03-array-pointer/">[03] 배열과 포인터(Array and Pointer)</a>
           </li>
         
-          <li>
-            <a href="/2020/01/09/c-02-array-2d/">[02] 2차원 배열(2D Array)</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -181,7 +190,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
     </div>
   </div>
 
@@ -191,7 +200,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/array/" style="font-size: 17.5px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 15px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 15px;">CodeSignal</a> <a href="/tags/matlab/" style="font-size: 12.5px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.5px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 15px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.5px;">Simulink</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 12.5px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 12.5px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+      <a href="/tags/array/" style="font-size: 17.5px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 15px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 15px;">CodeSignal</a> <a href="/tags/matlab/" style="font-size: 12.5px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.5px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 15px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.5px;">Simulink</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 15px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 15px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
     </div>
   </div>
 
