@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2020-01-10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/12/2020-01-10/" class="article-date">
+  <time datetime="2020-01-11T16:23:21.000Z" itemprop="datePublished">2020-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/12/2020-01-10/">2020.01.10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>오늘은 논문 포멧팅을 위해서 Latex 문법을 공부한 날이다. 문법 공부하면서 포멧팅도 해보고 굉장히 뿌듯했다.</p>
+<p>내비 처리 관련해서 코딩을 마저 해야하는데 내키지 않아서 계속 미루게 된다…</p>
+<h1 id="메모"><a href="#메모" class="headerlink" title="메모"></a>메모</h1><p>Latex가 생각보다 코딩하기가 빡셌다. 아직 많이 다뤄보지 않아서 그런 것도 있는데, 어떤 기능을 어떻게 구현해야하는지가 아직 와닿지 않아서 그런 것 같다. 그래도 HTML이나 Markdown류의 문서 및 코딩 스타일을 작성해본 경험 때문인지 금방 배운 것 같다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/12/2020-01-10/" data-id="ck59sx18y0000fljdg5o9c8me" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-c-08-enum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/10/c-08-enum/" class="article-date">
@@ -553,50 +598,7 @@
       <a data-url="http://yoursite.com/2020/01/09/2020-01-09/" data-id="ck56uehob0000tbjdehzy6qea" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-pythoncodefight-day4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/09/pythoncodefight-day4/" class="article-date">
-  <time datetime="2020-01-09T10:57:32.000Z" itemprop="datePublished">2020-01-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/09/pythoncodefight-day4/">PythonCodeFight-Day4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Day-4"><a href="#Day-4" class="headerlink" title="Day_4"></a>Day_4</h1><h1 id="Q9-allLongestStrings"><a href="#Q9-allLongestStrings" class="headerlink" title="Q9. allLongestStrings"></a>Q9. allLongestStrings</h1><p>Given an array of strings, return another array containing all of its longest strings.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">allLongestStrings</span><span class="params">(inputArray)</span>:</span></span><br><span class="line">    maxLen = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">        <span class="keyword">if</span> maxLen &lt; len(word):</span><br><span class="line">            maxLen = len(word)</span><br><span class="line"></span><br><span class="line">    maxLenList = list()</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">        <span class="keyword">if</span> len(word) == maxLen:</span><br><span class="line">            maxLenList.append(word)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> maxLenList</span><br></pre></td></tr></table></figure>
-<p>오늘부턴 코드 짜는 과정도 메모해둘 수 있으면 메모해서 올리자</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 문제 파악</span></span><br><span class="line"><span class="comment"># Given an array of strings, return another array containing all of its longest strings.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For inputArray = ["aba", "aa", "ad", "vcd", "aba"], the output should be</span></span><br><span class="line"><span class="comment"># allLongestStrings(inputArray) = ["aba", "vcd", "aba"].</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 입출력 확인</span></span><br><span class="line"><span class="comment"># Input/Output</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [execution time limit] 4 seconds (py3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [input] array.string inputArray</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A non-empty array.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Guaranteed constraints:</span></span><br><span class="line"><span class="comment"># 1 ≤ inputArray.length ≤ 10,</span></span><br><span class="line"><span class="comment"># 1 ≤ inputArray[i].length ≤ 10.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [output] array.string</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Array of the longest strings, stored in the same order as in the inputArray.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 개발 과정 </span></span><br><span class="line">inputArray = [<span class="string">"aba"</span>, <span class="string">"aa"</span>, <span class="string">"ad"</span>, <span class="string">"vcd"</span>, <span class="string">"aba"</span>] <span class="comment"># 제공된 입력 확인</span></span><br><span class="line">print(inputArray)</span><br><span class="line">print(inputArray[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최대 길이 구하기</span></span><br><span class="line">maxLen = <span class="number">0</span> </span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">    <span class="keyword">if</span> maxLen &lt; len(word):</span><br><span class="line">        maxLen = len(word)</span><br><span class="line">print(maxLen)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최대 길이인 리스트 채워넣기</span></span><br><span class="line">maxLenList = list()</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">    <span class="keyword">if</span> len(word) == maxLen:</span><br><span class="line">        maxLenList.append(word)</span><br><span class="line">print(maxLenList)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/09/pythoncodefight-day4/" data-id="ck56mcjbz0000wzjd10v17tak" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li></ul>
 
     </footer>
   </div>
@@ -633,6 +635,10 @@
       <ul>
         
           <li>
+            <a href="/2020/01/12/2020-01-10/">2020.01.10</a>
+          </li>
+        
+          <li>
             <a href="/2020/01/10/c-08-enum/">[08] 열거형 (enum)]</a>
           </li>
         
@@ -648,10 +654,6 @@
             <a href="/2020/01/10/c-05-struct-pointer/">[05] 구조체와 포인터 (struct and pointer)</a>
           </li>
         
-          <li>
-            <a href="/2020/01/10/c-04-struct-basic/">[04] 구조체 (struct)</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -661,7 +663,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/" rel="tag">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/" rel="tag">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
     </div>
   </div>
 
@@ -671,7 +673,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/array/" style="font-size: 17.5px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 15px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 15px;">CodeSignal</a> <a href="/tags/matlab/" style="font-size: 12.5px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.5px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 15px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.5px;">Simulink</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 15px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 15px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+      <a href="/tags/array/" style="font-size: 17.5px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 15px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 15px;">CodeSignal</a> <a href="/tags/latex/" style="font-size: 10px;">LaTex</a> <a href="/tags/matlab/" style="font-size: 12.5px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.5px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 15px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.5px;">Simulink</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 15px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 15px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
     </div>
   </div>
 
