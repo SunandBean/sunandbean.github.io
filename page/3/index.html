@@ -64,6 +64,349 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/07/pythoncodefight-day3/" class="article-date">
+  <time datetime="2020-01-07T14:34:21.000Z" itemprop="datePublished">2020-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/07/pythoncodefight-day3/">PythonCodeFight-Day3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-3"><a href="#Day-3" class="headerlink" title="Day_3"></a>Day_3</h1><h1 id="Q8-matrixElementSum"><a href="#Q8-matrixElementSum" class="headerlink" title="Q8. matrixElementSum"></a>Q8. matrixElementSum</h1><p>After becoming famous, the CodeBots decided to move into a new building together. Each of the rooms has a different cost, and some of them are free, but there’s a rumour that all the free rooms are haunted! Since the CodeBots are quite superstitious, they refuse to stay in any of the free rooms, <strong>or any of the rooms below any of the free rooms</strong>.</p>
+<p>Given <code>matrix</code>, a rectangular matrix of integers, where each value represents the cost of the room, your task is to return the total sum of all rooms that are suitable for the CodeBots (ie: add up all the values that don’t appear below a <code>0</code>).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">matrixElementsSum</span><span class="params">(matrix)</span>:</span></span><br><span class="line">    <span class="comment"># matrix = [[0, 1, 1, 2], </span></span><br><span class="line">    <span class="comment">#         [0, 5, 0, 0], </span></span><br><span class="line">    <span class="comment">#         [2, 0, 3, 3]]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> col <span class="keyword">in</span> range(len(matrix[<span class="number">0</span>])): <span class="comment"># 열 검색</span></span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> range(len(matrix)): <span class="comment"># 행 검색</span></span><br><span class="line">            <span class="keyword">if</span> matrix[row][col] == <span class="number">0</span>: <span class="comment"># 리스트에서 0의 인덱스 찾기</span></span><br><span class="line">                print(<span class="string">"row: &#123;&#125; col: &#123;&#125; is zero"</span>.format(row,col)) <span class="comment"># 0의 열 중 0의 행 아래로 다 0으로 처리</span></span><br><span class="line">                <span class="keyword">for</span> remain <span class="keyword">in</span> range(row,len(matrix),<span class="number">1</span>):</span><br><span class="line">                    matrix[remain][col] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    Temp_sum = list() <span class="comment"># 전체 합 넣을 리스트</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(len(matrix)): </span><br><span class="line">        Temp_sum.append(sum(matrix[row]))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sum(Temp_sum)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/07/pythoncodefight-day3/" data-id="ck53z84i10000mxjd9v20ecwj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-01-06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/07/2020-01-06/" class="article-date">
+  <time datetime="2020-01-06T15:27:58.000Z" itemprop="datePublished">2020-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/07/2020-01-06/">2020.01.06</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>오늘도 역시나 개발을 안했다!<br>내일 있을 만도 면접 준비도 있고, 이번 방학부터 다음 달에 있을 산학 과제 최종 발표 회의, 그리고 월마다 제출하는 연구 내용을 작성했다.</p>
+<p>또, 논문을 어떻게 쓸 지에 대한 아웃라인 고민도 하고, 1월달의 계획도 수립했다.</p>
+<p>점심먹고 졸릴 때 파이썬 코드 파이트를 했는데, 한 문제는 굉장히 쉽게 풀려서 금방 해결했는데, 한 문제가 너무 풀리지 않아서 그냥 해설집을 봤다.</p>
+<p>문제를 보는데 도저히 어떻게 구현해야할 지 생각이 안나서 시행착오로 해결할까 했는데, 그게 잘 안되서 그냥 답을 본 것이었다.</p>
+<p>내일의 면접이 끝나면 개발해야할 일들이 산더미처럼 쌓여있기 때문에, 아마 수요일부터는 제대로 개발 일지가 올라가지 않을까 싶다!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/07/2020-01-06/" data-id="ck52lr4mi0000ezjdc5jyadrk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pythoncodefight-day2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/pythoncodefight-day2/" class="article-date">
+  <time datetime="2020-01-06T14:13:24.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/pythoncodefight-day2/">PythonCodeFight-Day2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day_2"></a>Day_2</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><h2 id="Q6-Make-Array-Consecutive-2"><a href="#Q6-Make-Array-Consecutive-2" class="headerlink" title="Q6. Make Array Consecutive 2"></a>Q6. Make Array Consecutive 2</h2><p>Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative integer size. Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue will be bigger than the previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help him figure out the minimum number of additional statues needed.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeArrayConsecutive2</span><span class="params">(statues)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> ((max(statues) - min(statues) +<span class="number">1</span>) - len(statues))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Q7-almostIncreasingSequence"><a href="#Q7-almostIncreasingSequence" class="headerlink" title="Q7. almostIncreasingSequence"></a>Q7. almostIncreasingSequence</h2><p>Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing sequence by removing no more than one element from the array.</p>
+<p><em>Note:</em> sequence <code>a0</code>, <code>a1</code>, …, <code>an</code> is considered to be a strictly increasing if <code>a0 &lt; a1 &lt; ... &lt; an</code>. Sequence containing only one element is also considered to be strictly increasing.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 못 풀겠어서 솔루션을 가져왔음 pharfenmeister의 솔루션</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">almostIncreasingSequence</span><span class="params">(sequence)</span>:</span></span><br><span class="line">    droppped = <span class="literal">False</span></span><br><span class="line">    last = prev = min(sequence) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> elm <span class="keyword">in</span> sequence:</span><br><span class="line">        <span class="keyword">if</span> elm &lt;= last:</span><br><span class="line">            <span class="keyword">if</span> droppped:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                droppped = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> elm &lt;= prev:</span><br><span class="line">                prev = last</span><br><span class="line">            <span class="keyword">elif</span> elm &gt;= prev:</span><br><span class="line">                prev = last = elm</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            prev, last = last, elm</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>못 푼 이유: 조건이 잘 그려지지 않음</p>
+<p>고민한 시간: 1시간 고민</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/06/pythoncodefight-day2/" data-id="ck52izvdf0000i7jd80urbd9q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-01-05" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/2020-01-05/" class="article-date">
+  <time datetime="2020-01-05T17:40:25.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/2020-01-05/">2020.01.05</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>오늘은 특별한 개발은 따로 하진 않았고, 파이썬 공부를 위해서 파이썬 코드 파이팅 하는 오픈채팅방에 들어간 것이 제일 큰 일이었다.</p>
+<p>인트로라고 해서 쉽게 봤는데 생각보다 잘 안풀려서 꽤나 당황하면서 문제를 풀었다.</p>
+<p>그리고 오픈채팅방의 규칙 상 블로그에 하루하루 문제 푼 것을 업로드 해야하는데, 그것 때문에 헥소 블로그 관련해서 이런저런 세팅을 만져봤다.</p>
+<p>제공되는 테마를 이용해보려고 다운 받았는데, 중국 사람이 만든거라서 중국어가 묻어나오는데, 어디서 수정해야하는지 도저히 찾을 수가 없어서 그냥 기본 테마를 다시 쓰기로 했다.</p>
+<p>또 헥소 블로그를 이런저런 곳에서 같이 쓰려고 온갖 방법을 해봤는데, 아직 깃허브와 이 블로그의 파일트리가 나한테 익숙하지 않은 일들이어서 그런지 지금은 도무지 못 할 것 같다.</p>
+<p>그래서 그냥 드롭박스에 마크다운 폴더 하나 만들어서 블로그 포스팅할 내용들을 마크다운 파일로 만들어서 넣으려고 한다.</p>
+<p>마크다운 파일만 있으면 집에 와서 데스크탑에 넣고, 생성하고 배포만 하면 되니까 꽤 괜찮은 대안을 찾은 것 같다.</p>
+<p>내일부터 다시 조금씩 개발을 진행할 것이다!!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/06/2020-01-05/" data-id="ck51b58mr0000nijd6lbme4v0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PythonCodeFight-Day1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/05/PythonCodeFight-Day1/" class="article-date">
+  <time datetime="2020-01-05T02:11:41.000Z" itemprop="datePublished">2020-01-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/05/PythonCodeFight-Day1/">PythonCodeFight_Day1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day_1"></a>Day_1</h1><p><a href="https://app.codesignal.com/arcade" target="_blank" rel="noopener">https://app.codesignal.com/arcade</a></p>
+<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><h2 id="Q1-add"><a href="#Q1-add" class="headerlink" title="Q1. add"></a>Q1. add</h2><p>Write a function that returns the sum of two numbers.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(param1, param2)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> param1 + param2</span><br></pre></td></tr></table></figure>
+
+<h2 id="Q2-centuryFromYear"><a href="#Q2-centuryFromYear" class="headerlink" title="Q2. centuryFromYear"></a>Q2. centuryFromYear</h2><p>Given a year, return the century it is in. The first century spans from the year 1 up to and including the year 100, the second - from the year 101 up to and including the year 200, etc.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">centuryFromYear</span><span class="params">(year)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> year % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        century = int(year / <span class="number">100</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        century = int(year / <span class="number">100</span>) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> century</span><br></pre></td></tr></table></figure>
+
+<h2 id="Q3-checkPalindrome"><a href="#Q3-checkPalindrome" class="headerlink" title="Q3. checkPalindrome"></a>Q3. checkPalindrome</h2><p>Given the string, check if it is a palindrome.</p>
+<ul>
+<li><p>palindrome: 앞으로 읽어도, 뒤로 읽어도 같은 문자열</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkPalindrome</span><span class="params">(inputString)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (inputString == inputString[::<span class="number">-1</span>])</span><br><span class="line">    </span><br><span class="line"><span class="comment"># string을 뒤집는 방법 </span></span><br><span class="line"><span class="comment"># s = 'abc'</span></span><br><span class="line"><span class="comment"># s[::-1] = 'cba'</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Q4-adjacentElementsProduct"><a href="#Q4-adjacentElementsProduct" class="headerlink" title="Q4. adjacentElementsProduct"></a>Q4. adjacentElementsProduct</h2><p>Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adjacentElementsProduct</span><span class="params">(inputArray)</span>:</span></span><br><span class="line">    arrFront = inputArray[:<span class="number">-1</span>]</span><br><span class="line">    arrRear = inputArray[<span class="number">1</span>:]</span><br><span class="line">    </span><br><span class="line">    arrMul = list()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arrFront)):</span><br><span class="line">        arrMul.append(arrFront[i]*arrRear[i])</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> max(arrMul)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Q5-shapeArea"><a href="#Q5-shapeArea" class="headerlink" title="Q5. shapeArea"></a>Q5. shapeArea</h2><p>Below we will define an <code>n</code>-interesting polygon. Your task is to find the area of a polygon for a given <code>n</code>.</p>
+<p>A <code>1</code>-interesting polygon is just a square with a side of length <code>1</code>. An <code>n</code>-interesting polygon is obtained by taking the <code>n - 1</code>-interesting polygon and appending <code>1</code>-interesting polygons to its rim, side by side. You can see the <code>1</code>-, <code>2</code>-, <code>3</code>- and <code>4</code>-interesting polygons in the picture below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shapeArea</span><span class="params">(n)</span>:</span></span><br><span class="line">    area = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>*n<span class="number">-1</span>,<span class="number">0</span>,<span class="number">-2</span>):</span><br><span class="line">        area += i*<span class="number">2</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> (area - (<span class="number">2</span>*n<span class="number">-1</span>))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/05/PythonCodeFight-Day1/" data-id="ck50ized50004mjjd6s0mh8iu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-01-04" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/05/2020-01-04/" class="article-date">
+  <time datetime="2020-01-04T16:11:34.000Z" itemprop="datePublished">2020-01-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/05/2020-01-04/">2020.01.04</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>네이버 부스트코스 - 파이토치 RNN 프로젝트 다시 제출 (Colab GPU를 이용해서!)</p>
+<p>매트랩 코드 옮기는 작업 마무리<br>필요한 함수 정리</p>
+<h2 id="메모"><a href="#메모" class="headerlink" title="메모"></a>메모</h2><p>많은 일을 하지는 못했다! 그래도 코딩 옮기는 것은 끝냈고, 어떤 함수가 필요한지도 정리했다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/05/2020-01-04/" data-id="ck50ized40003mjjd9uhf3e96" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/function/" rel="tag">function</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-01-03" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/04/2020-01-03/" class="article-date">
+  <time datetime="2020-01-03T21:34:17.000Z" itemprop="datePublished">2020-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/04/2020-01-03/">2020.01.03</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>어제 작업하던 것 마저 작성했음. 마무리는 못함</p>
+<h2 id="작업한-내용"><a href="#작업한-내용" class="headerlink" title="작업한 내용"></a>작업한 내용</h2><p>어제랑 같은 작업을 했는데, 어제 마저 못채운 곡률 처리, 슬로프 처리하는 부분을 작성하다가 끝남! 대청소하느라 시간이 별로 없었다.</p>
+<h2 id="공부해야하는-내용"><a href="#공부해야하는-내용" class="headerlink" title="공부해야하는 내용"></a>공부해야하는 내용</h2><p>매트랩에서 배열 슬라이싱 하는걸 진짜 너무 많이 해놔서, 관련된 함수를 짜거나 해야할 것 같음. 어떤식으로 짜야할지 고민 좀 해야할 것 같다.<br>그리고 필요한 함수들을 좀 다 짜야할 것 같다.</p>
+<p>예를 들면,<br>입력으로 배열, 인덱스 시작, 인덱스 끝을 받아서 새롭게 배열 포인터 만들어서 리턴.<br>배열 포인터는 동적 할당으로 생성하고 메모리 해제시켜주는 부분까지 잘 생각해서!</p>
+<h2 id="느낀-점"><a href="#느낀-점" class="headerlink" title="느낀 점"></a>느낀 점</h2><p>매트랩이 진짜 프로토타입 개발하기도 좋고, 파이썬이 왜 인기가 많아졌는지 알 수 있는 아주 좋은 기회다. 또 C언어에서 C++로 사람들이 왜 넘어가는지도 알겠다. 이런 불편함을 해소해줄 수 있는 다양한 라이브러리들이 C++에서 개발이 많이 되어있기 때문이다. </p>
+<p>그리고 애초에 배열을 핸들링하는 부분에 있어서 C++이 벡터 개념때문에 훨씬 용이하기 때문이다. </p>
+<p>그래도 임베디드에서는 C를 쓰는 이유를 모르겠다. 아직 인사이트가 부족한 것 같다. 공부 더 해야지!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/04/2020-01-03/" data-id="ck50ized10001mjjdg2pa7neo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-01-02" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/03/2020-01-02/" class="article-date">
@@ -199,64 +542,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/27/hello-world/" class="article-date">
-  <time datetime="2019-12-27T12:16:09.744Z" itemprop="datePublished">2019-12-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/99-etc/">99_ETC</a>►<a class="article-category-link" href="/categories/99-etc/test/">Test</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/27/hello-world/" data-id="ck50izedb0007mjjdc3ba50v0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -280,23 +570,23 @@
       <ul>
         
           <li>
-            <a href="/2020/01/12/2020-01-10/">2020.01.10</a>
+            <a href="/2020/01/12/c-15-sort/">[15] 정렬 (sort)</a>
           </li>
         
           <li>
-            <a href="/2020/01/10/c-08-enum/">[08] 열거형 (enum)]</a>
+            <a href="/2020/01/12/c-14-function-inputstruct/">[14] 구조체를 입력으로 이용하는 함수 (function using struct as input)</a>
           </li>
         
           <li>
-            <a href="/2020/01/10/c-07-struct-array/">[07] 구조체 배열 (struct array)</a>
+            <a href="/2020/01/12/c-13-function-inputarray/">[13] 배열을 입력으로 이용하는 함수 (function using array as input)</a>
           </li>
         
           <li>
-            <a href="/2020/01/10/c-06-struct-memset/">[06] 구조체 멤버값 설정 (memset)</a>
+            <a href="/2020/01/12/c-12-function-inputpointers/">[12] 포인터를 입력으로 이용하는 함수 (function using pointers as inputs)</a>
           </li>
         
           <li>
-            <a href="/2020/01/10/c-05-struct-pointer/">[05] 구조체와 포인터 (struct and pointer)</a>
+            <a href="/2020/01/12/c-11-function-inputvariables/">[11] 함수 입력 이용하기 (function input variables)</a>
           </li>
         
       </ul>
@@ -308,7 +598,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/" rel="tag">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bubble-sort/" rel="tag">bubble sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/" rel="tag">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/" rel="tag">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quick-sort/" rel="tag">quick sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return/" rel="tag">return</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/" rel="tag">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
     </div>
   </div>
 
@@ -318,7 +608,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/array/" style="font-size: 17.5px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 15px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 15px;">CodeSignal</a> <a href="/tags/latex/" style="font-size: 10px;">LaTex</a> <a href="/tags/matlab/" style="font-size: 12.5px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.5px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 15px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.5px;">Simulink</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/function/" style="font-size: 10px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 15px;">pointer</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 15px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+      <a href="/tags/array/" style="font-size: 16px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 14px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 14px;">CodeSignal</a> <a href="/tags/latex/" style="font-size: 10px;">LaTex</a> <a href="/tags/matlab/" style="font-size: 12px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 14px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12px;">Simulink</a> <a href="/tags/array/" style="font-size: 12px;">array</a> <a href="/tags/bubble-sort/" style="font-size: 10px;">bubble sort</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/function/" style="font-size: 18px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/input/" style="font-size: 14px;">input</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 14px;">pointer</a> <a href="/tags/quick-sort/" style="font-size: 10px;">quick sort</a> <a href="/tags/return/" style="font-size: 10px;">return</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 16px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
     </div>
   </div>
 
