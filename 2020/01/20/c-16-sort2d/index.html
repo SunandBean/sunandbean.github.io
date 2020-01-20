@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>c-16-sort2d | SB-Dev-Note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2차원 배열 정렬 (sortrows)Matlab에서 제공하는 sortrows 함수를 C언어로 구현한 것 참고자료: 코딩도장 - 버블정렬  2차원 배열 정렬 기능 설명2차원 배열을 받아서, 각 행의 맨 앞의 값의 크기를 기준으로 오름차순으로 정렬한다. 예를 들어보면 123456int a[4][3] &#x3D; &amp;#123;    &amp;#123;5,3,4,2&amp;#125;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c-16-sort2d">
+<meta property="og:url" content="http://yoursite.com/2020/01/20/c-16-sort2d/index.html">
+<meta property="og:site_name" content="SB-Dev-Note">
+<meta property="og:description" content="2차원 배열 정렬 (sortrows)Matlab에서 제공하는 sortrows 함수를 C언어로 구현한 것 참고자료: 코딩도장 - 버블정렬  2차원 배열 정렬 기능 설명2차원 배열을 받아서, 각 행의 맨 앞의 값의 크기를 기준으로 오름차순으로 정렬한다. 예를 들어보면 123456int a[4][3] &#x3D; &amp;#123;    &amp;#123;5,3,4,2&amp;#125;,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-20T14:06:33.000Z">
+<meta property="article:modified_time" content="2020-01-20T14:06:56.221Z">
+<meta property="article:author" content="Sunbin Vincent Kim">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="array">
+<meta property="article:tag" content="sort">
+<meta property="article:tag" content="bubble sort">
+<meta property="article:tag" content="2d array">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="SB-Dev-Note" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SB-Dev-Note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c-16-sort2d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/20/c-16-sort2d/" class="article-date">
+  <time datetime="2020-01-20T14:06:33.000Z" itemprop="datePublished">2020-01-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/c/">C</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      c-16-sort2d
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2차원-배열-정렬-sortrows"><a href="#2차원-배열-정렬-sortrows" class="headerlink" title="2차원 배열 정렬 (sortrows)"></a>2차원 배열 정렬 (sortrows)</h1><p>Matlab에서 제공하는 sortrows 함수를 C언어로 구현한 것</p>
+<p>참고자료: 코딩도장 - 버블정렬</p>
+<hr>
+<h2 id="2차원-배열-정렬-기능-설명"><a href="#2차원-배열-정렬-기능-설명" class="headerlink" title="2차원 배열 정렬 기능 설명"></a>2차원 배열 정렬 기능 설명</h2><p>2차원 배열을 받아서, 각 행의 맨 앞의 값의 크기를 기준으로 오름차순으로 정렬한다.</p>
+<p>예를 들어보면</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">4</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같은 배열이 있을 때, 각 행의 맨 앞의 값과 행의 인덱스는 아래와 같다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rowVal1 = &#123;&#123;<span class="number">5</span>&#125;,&#123;<span class="number">4</span>&#125;,&#123;<span class="number">7</span>&#125;,&#123;<span class="number">2</span>&#125;&#125;;</span><br><span class="line">rowIdx1 = &#123;&#123;<span class="number">0</span>&#125;,&#123;<span class="number">1</span>&#125;,&#123;<span class="number">2</span>&#125;,&#123;<span class="number">3</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위의 정보를 행의 값에 따라 오름차순으로 정렬하면 아래와 같다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rowSortVal1 = &#123;&#123;<span class="number">2</span>&#125;,&#123;<span class="number">4</span>&#125;,&#123;<span class="number">5</span>&#125;,&#123;<span class="number">7</span>&#125;&#125;;</span><br><span class="line">rowSortIdx1 = &#123;&#123;<span class="number">3</span>&#125;,&#123;<span class="number">1</span>&#125;,&#123;<span class="number">0</span>&#125;,&#123;<span class="number">2</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>정렬된 행에 맞게 행렬 자체를 정렬하면 아래와 같다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> aSort[<span class="number">4</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">3</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>따라서, 각 행의 첫 값을 비교하여 바꿀 인덱스를 확인한 다음, 배열에서 해당 행들의 인덱스를 바꿔주면 된다.</p>
+<hr>
+<h3 id="C언어로-작성한-코드"><a href="#C언어로-작성한-코드" class="headerlink" title="C언어로 작성한 코드"></a>C언어로 작성한 코드</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 코딩 도장에서 제공한 기본적인 bubble sort를 내가 필요한 방식으로 수정</span></span><br><span class="line"><span class="comment">// 입력으로 배열의 각 행 첫 열의 값과 인덱스를 담은 배열을 받아오고, 배열의 크기를 받아온다.</span></span><br><span class="line"><span class="comment">// 배열을 입력으로 받아오는 것이기 때문에, 따로 리턴 값을 지정해줄 필요는 없다.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort_modi</span><span class="params">(<span class="keyword">int</span> arrVal[], <span class="keyword">int</span> arrIdx[], <span class="keyword">int</span> arrSize)</span></span>&#123; </span><br><span class="line">    <span class="comment">// 임시 저장 변수 선언</span></span><br><span class="line">    <span class="keyword">int</span> temp, tempIdx;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 배열의 사이즈 만큼 반복</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arrSize; i++)&#123; </span><br><span class="line">        <span class="comment">// 배열의 사이즈 - 1 만큼 반복 (다음 값을 봐야해서)</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; arrSize<span class="number">-1</span>; j++)&#123;</span><br><span class="line">            <span class="comment">// 현재 값이 다음 값보다 크면</span></span><br><span class="line">            <span class="keyword">if</span>(arrVal[j] &gt; arrVal[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="comment">// 값을 바꿔라</span></span><br><span class="line">                temp = arrVal[j];</span><br><span class="line">                arrVal[j] = arrVal[j+<span class="number">1</span>];</span><br><span class="line">                arrVal[j+<span class="number">1</span>] = temp;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 그리고 해당하는 인덱스의 위치도 바꿔라</span></span><br><span class="line">                tempIdx = arrIdx[j];</span><br><span class="line">                arrIdx[j] = arrIdx[j+<span class="number">1</span>];</span><br><span class="line">                arrIdx[j+<span class="number">1</span>] = tempIdx;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력으로 배열을 받아왔을 때 처리하는 방법과 배열까지 동적으로 선언해서 제공해주는 두 가지의 방법을 작성했다.</span></span><br><span class="line"><span class="comment">// 1. 입력으로 정렬할 배열의 주소를 받아올 때</span></span><br><span class="line"><span class="comment">// 2차원 배열의 경우, 고정된 값으로 선언했을 때에는 첫번째 입력에서 볼 수 있는 것처럼</span></span><br><span class="line"><span class="comment">// (자료형) arr[][열 사이즈]와 같이 선언해줘야한다.</span></span><br><span class="line"><span class="comment">// 입력으로 넣어주는 2차원 배열이 이중 포인터를 이용한 동적 할당으로 선언된 경우 두번째 입력에서 볼 수 있는 것처럼</span></span><br><span class="line"><span class="comment">// (자료형) **sortedArr 로 선언해주면 된다.</span></span><br><span class="line"><span class="comment">// 그리고 행과 열의 사이즈를 입력으로 넣어주면 된다.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort2DArr</span><span class="params">(<span class="keyword">int</span> arr[][<span class="number">3</span>], <span class="keyword">int</span> **sortedArr, <span class="keyword">int</span> row)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 0으로 초기화된 값, 인덱스를 위한 배열을 선언</span></span><br><span class="line">    <span class="keyword">int</span> *seq = <span class="built_in">calloc</span>(row, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">int</span> *seq_idx = <span class="built_in">calloc</span>(row, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 받아온 배열에서 첫 행의 값 꺼내서 넣고, 행의 인덱스 채워넣기</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)&#123;</span><br><span class="line">        seq[i] = arr[i][<span class="number">0</span>];</span><br><span class="line">        seq_idx[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 인덱스 정렬하기</span></span><br><span class="line">    bubble_sort_modi(seq,seq_idx,row);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 정렬된 인덱스에 따라서 정렬한 값을 넣을 배열에 값을 복사해서 넣기</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)&#123;</span><br><span class="line">        <span class="built_in">memcpy</span>(sortedArr[i],arr[seq_idx[i]],<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 동적 할당한 배열 메모리 해제</span></span><br><span class="line">    <span class="built_in">free</span>(seq);</span><br><span class="line">    <span class="built_in">free</span>(seq_idx);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 정렬할 배열을 만들어서 리턴해줄 때</span></span><br><span class="line"><span class="comment">// 동적 할당으로 선언된 배열을 이중포인터로 리턴해주고, 행렬의 사이즈를 잘 알려주면 리턴으로 받아서 이용할 수 있다.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>** <span class="title">sort2DArr2</span><span class="params">(<span class="keyword">int</span> arr[][<span class="number">3</span>], <span class="keyword">int</span> row)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 0으로 초기화된 값, 인덱스를 위한 배열을 선언</span></span><br><span class="line">    <span class="keyword">int</span> *seq = <span class="built_in">calloc</span>(row, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">int</span> *seq_idx = <span class="built_in">calloc</span>(row, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 받아온 배열에서 첫 행의 값 꺼내서 넣고, 행의 인덱스 채워넣기</span></span><br><span class="line">    <span class="keyword">int</span> **sortedArr = <span class="built_in">calloc</span>(row, <span class="keyword">sizeof</span>(<span class="keyword">int</span> *));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)&#123;</span><br><span class="line">        sortedArr[i] = <span class="built_in">calloc</span>(<span class="number">3</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 받아온 배열에서 첫 행의 값 꺼내서 넣고, 행의 인덱스 채워넣기</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)&#123;</span><br><span class="line">        seq[i] = arr[i][<span class="number">0</span>];</span><br><span class="line">        seq_idx[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 인덱스 정렬하기</span></span><br><span class="line">    bubble_sort_modi(seq,seq_idx,row);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 정렬된 인덱스에 따라서 정렬한 값을 넣을 배열에 값을 복사해서 넣기</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)&#123;</span><br><span class="line">        <span class="built_in">memcpy</span>(sortedArr[i],arr[seq_idx[i]],<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 동적 할당한 배열 메모리 해제</span></span><br><span class="line">    <span class="built_in">free</span>(seq);</span><br><span class="line">    <span class="built_in">free</span>(seq_idx);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sortedArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="테스트코드"><a href="#테스트코드" class="headerlink" title="테스트코드"></a>테스트코드</h3><p>테스트 해볼 방법만 살려두고 주석처리하고 실행해야함</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort_modi</span><span class="params">(<span class="keyword">int</span> arrVal[], <span class="keyword">int</span> arrIdx[], <span class="keyword">int</span> arrSize)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort2DArr</span><span class="params">(<span class="keyword">int</span> arr[][<span class="number">3</span>], <span class="keyword">int</span> **sortedArr, <span class="keyword">int</span> row)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span>** <span class="title">sort2DArr2</span><span class="params">(<span class="keyword">int</span> arr[][<span class="number">3</span>], <span class="keyword">int</span> row)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">4</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">        &#123;<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>&#125;,</span><br><span class="line">        &#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>&#125;,</span><br><span class="line">        &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,</span><br><span class="line">        &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">2</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1번 방법으로 이용할 경우</span></span><br><span class="line">    <span class="keyword">int</span> **sortedArr = <span class="built_in">calloc</span>(<span class="number">4</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span> *));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        sortedArr[i] = <span class="built_in">calloc</span>(<span class="number">3</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> seq[<span class="number">4</span>];</span><br><span class="line">    <span class="keyword">int</span> seq_idx[<span class="number">4</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        seq[i] = a[i][<span class="number">0</span>];</span><br><span class="line">        seq_idx[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Base a\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">    sort2DArr(a, sortedArr, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Sorted a\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>,sortedArr[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2번 방법으로 이용할 경우</span></span><br><span class="line">    <span class="keyword">int</span> **sortedArr;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Base a\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);    </span><br><span class="line">    </span><br><span class="line">    sortedArr = sort2DArr2(a, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Sorted a\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>,sortedArr[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Free</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">free</span>(sortedArr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(sortedArr);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/20/c-16-sort2d/" data-id="ck5miwxst000097jd26os5obu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2d-array/" rel="tag">2d array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bubble-sort/" rel="tag">bubble sort</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sort/" rel="tag">sort</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/20/pythoncodefight-day10/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PythonCodeFight-Day10</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/00-diary/">00_Diary</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/00-diary/dailydev/">DailyDev.</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/">01_Study</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/c/">C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/python/">Python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/99-etc/">99_ETC</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/99-etc/test/">Test</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/20/c-16-sort2d/">c-16-sort2d</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/20/pythoncodefight-day10/">PythonCodeFight-Day10</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/19/pythoncodefight-day9/">PythonCodeFight-Day9</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/18/pythoncodefight-day8/">PythonCodeFight-Day8</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/15/pythoncodefight-day7/">PythonCodeFight-Day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/" rel="tag">2d array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bubble-sort/" rel="tag">bubble sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/" rel="tag">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/" rel="tag">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quick-sort/" rel="tag">quick sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return/" rel="tag">return</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/" rel="tag">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2d-array/" style="font-size: 10px;">2d array</a> <a href="/tags/array/" style="font-size: 15.71px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 18.57px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 18.57px;">CodeSignal</a> <a href="/tags/latex/" style="font-size: 10px;">LaTex</a> <a href="/tags/matlab/" style="font-size: 12.86px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.86px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 18.57px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.86px;">Simulink</a> <a href="/tags/array/" style="font-size: 14.29px;">array</a> <a href="/tags/bubble-sort/" style="font-size: 11.43px;">bubble sort</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/function/" style="font-size: 17.14px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/input/" style="font-size: 14.29px;">input</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 15.71px;">pointer</a> <a href="/tags/quick-sort/" style="font-size: 10px;">quick sort</a> <a href="/tags/return/" style="font-size: 10px;">return</a> <a href="/tags/sort/" style="font-size: 11.43px;">sort</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 15.71px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Sunbin Vincent Kim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
