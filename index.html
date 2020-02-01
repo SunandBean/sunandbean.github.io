@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day14" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/01/pythoncodefight-day14/" class="article-date">
+  <time datetime="2020-02-01T01:27:24.000Z" itemprop="datePublished">2020-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/01/pythoncodefight-day14/">PythonCodeFight-Day14</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-14"><a href="#Day-14" class="headerlink" title="Day_14"></a>Day_14</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q21-isIPv4Address"><a href="#Q21-isIPv4Address" class="headerlink" title="Q21. isIPv4Address"></a>Q21. isIPv4Address</h2><p>An IP address is a numerical label assigned to each device (e.g., computer, printer) participating in a computer network that uses the Internet Protocol for communication. There are two versions of the Internet protocol, and thus two versions of addresses. One of them is the IPv4 address.</p>
+<p>제출 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIPv4Address</span><span class="params">(inputString)</span>:</span></span><br><span class="line">    inputDivide = inputString.split(<span class="string">'.'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> len(inputDivide) != <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(inputDivide)):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> inputDivide[i]:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> ((int(inputDivide[i]) &gt;= <span class="number">0</span>) <span class="keyword">and</span> (int(inputDivide[i]) &lt;= <span class="number">255</span>)):</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="keyword">except</span>:            </span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>작성 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Case</span></span><br><span class="line"><span class="comment"># inputString = "172.16.254.1"</span></span><br><span class="line"><span class="comment"># inputString = ".254.255.0"</span></span><br><span class="line"><span class="comment"># inputString = "1.23.256.255."</span></span><br><span class="line">inputString = <span class="string">"0.254.255.0"</span></span><br><span class="line"><span class="comment"># inputString = "1.1.1.1a"</span></span><br><span class="line"></span><br><span class="line">print(len(inputString))</span><br><span class="line">print(inputString)</span><br><span class="line">inputDivide = inputString.split(<span class="string">'.'</span>) <span class="comment"># '.'을 기준으로 문자열 분리</span></span><br><span class="line">print(inputDivide)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test 1 </span></span><br><span class="line"><span class="comment"># inputString = "1.1.1.1a" 의 케이스에서 에러가 났음</span></span><br><span class="line"><span class="comment"># 1a를 int로 처리하는 경우 에러가 발생!</span></span><br><span class="line"><span class="keyword">if</span> len(inputDivide) != <span class="number">4</span>: <span class="comment"># split을 하는 경우, '.' 가 3개가 아니면 ip가 아니기 때문에 갯수 제약 조건을 넣어줬음</span></span><br><span class="line">    print(<span class="string">"False, Not 4 values"</span>)</span><br><span class="line"><span class="keyword">else</span>: <span class="comment"># 갯수가 맞는 경우</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(inputDivide)): <span class="comment"># 각 항몫을 판단</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> inputDivide[i]: <span class="comment"># 값이 없는 경우</span></span><br><span class="line">            print(<span class="string">"False, Empty string"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> int(inputDivide[i]): </span><br><span class="line">                print(<span class="string">"False, Not number"</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ((int(inputDivide[i]) &gt;= <span class="number">0</span>) <span class="keyword">and</span> (int(inputDivide[i]) &lt;= <span class="number">255</span>)): <span class="comment"># 값이 숫자 범위 내에 있지 않은 경우</span></span><br><span class="line">                    print(<span class="string">"False, Not in range"</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    print(<span class="string">"True"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test 2</span></span><br><span class="line"><span class="comment"># 0인 경우 False 값을 리턴하는 에러가 생겼음</span></span><br><span class="line"><span class="keyword">if</span> len(inputDivide) != <span class="number">4</span>:</span><br><span class="line">    print(<span class="string">"False, Not 4 values"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(inputDivide)):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> int(inputDivide[i])): <span class="comment"># 이렇게 하니까 0인 경우 False가 나옴</span></span><br><span class="line">                print(<span class="string">"False, Not number"</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ((int(inputDivide[i]) &gt;= <span class="number">0</span>) <span class="keyword">and</span> (int(inputDivide[i]) &lt;= <span class="number">255</span>)):</span><br><span class="line">                    print(<span class="string">"False, Not in range"</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    print(<span class="string">"True"</span>)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(<span class="string">"False, Not number"</span>)                    </span><br><span class="line"></span><br><span class="line"><span class="comment"># Test 3</span></span><br><span class="line"><span class="comment"># 최종 제출 코드</span></span><br><span class="line"><span class="keyword">if</span> len(inputDivide) != <span class="number">4</span>:</span><br><span class="line">    print(<span class="string">"False, Not 4 values"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(inputDivide)):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> inputDivide[i]:</span><br><span class="line">            print(<span class="string">"False, Empty string"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ((int(inputDivide[i]) &gt;= <span class="number">0</span>) <span class="keyword">and</span> (int(inputDivide[i]) &lt;= <span class="number">255</span>)):</span><br><span class="line">                    print(<span class="string">"False, Not in range"</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    print(<span class="string">"True"</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                print(<span class="string">"False, Not number"</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/01/pythoncodefight-day14/" data-id="ck62x30o500006o485ohdcbgh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pythoncodefight-day13" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/27/pythoncodefight-day13/" class="article-date">
@@ -528,51 +574,6 @@
 
 
   
-    <article id="post-pythoncodefight-day5" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/12/pythoncodefight-day5/" class="article-date">
-  <time datetime="2020-01-11T17:02:42.000Z" itemprop="datePublished">2020-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/pythoncodefight-day5/">PythonCodeFight-Day5</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Day-5"><a href="#Day-5" class="headerlink" title="Day_5"></a>Day_5</h1><h1 id="Q10-commonCharacterCount"><a href="#Q10-commonCharacterCount" class="headerlink" title="Q10. commonCharacterCount"></a>Q10. commonCharacterCount</h1><p>Given two strings, find the number of common characters between them.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">commonCharacterCount</span><span class="params">(s1, s2)</span>:</span></span><br><span class="line">    s3 = list(s1)</span><br><span class="line">    s4 = list(s2)</span><br><span class="line"></span><br><span class="line">    save = list()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> len(s3) &gt;= len(s4):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s4)):</span><br><span class="line">            Character = s4[i]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                Idx = s3.index(Character)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                save.append(s3.pop(Idx))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s3)):</span><br><span class="line">            Character = s3[i]</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                Idx = s4.index(Character)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                save.append(s4.pop(Idx))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> len(save)</span><br></pre></td></tr></table></figure>
-<p>작성 흐름</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># def commonCharacterCount(s1, s2):</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트를 위한 문자열</span></span><br><span class="line">s1 = <span class="string">"aabcc"</span></span><br><span class="line">s2 = <span class="string">"adcaa"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 뒤에서 인덱스 찾고 pop 할 때 str형은 pop을 할 수 없어서 list 처리를 해주는 부분</span></span><br><span class="line">s3 = list(s1)</span><br><span class="line">s4 = list(s2)</span><br><span class="line"></span><br><span class="line">save = list()</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 알고리즘</span></span><br><span class="line"><span class="comment"># 두 입력 중 길이가 짧은 녀석을 먼저 찾는다.</span></span><br><span class="line"><span class="comment"># 짧은 녀석의 길이로 반복을 한다</span></span><br><span class="line"><span class="comment"># 짧은 녀석의 첫 값을 확인한다.</span></span><br><span class="line"><span class="comment"># 긴 녀석에서 해당 값을 찾아서 pop 하고, 이를 다른 리스트에 저장한다.</span></span><br><span class="line"><span class="keyword">if</span> len(s1) &gt;= len(s2):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s2)):</span><br><span class="line">        Character = s2[i]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            Idx = s3.index(Character)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            save.append(s3.pop(Idx))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s1)):</span><br><span class="line">        Character = s1[i]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            Idx = s4.index(Character)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            save.append(s4.pop(Idx))</span><br><span class="line"></span><br><span class="line">print(len(save))</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/pythoncodefight-day5/" data-id="ck59ua7g80000ucjd40aa5pla" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -601,6 +602,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/01/pythoncodefight-day14/">PythonCodeFight-Day14</a>
+          </li>
+        
+          <li>
             <a href="/2020/01/27/pythoncodefight-day13/">PythonCodeFight-Day13</a>
           </li>
         
@@ -614,10 +619,6 @@
         
           <li>
             <a href="/2020/01/20/c-16-sort2d/">[16] 2차원 배열 정렬 (Sort 2D Array)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/20/pythoncodefight-day10/">PythonCodeFight-Day10</a>
           </li>
         
       </ul>
@@ -648,7 +649,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
     </div>
   </div>
 
