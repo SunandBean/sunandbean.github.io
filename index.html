@@ -64,6 +64,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day15" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/05/pythoncodefight-day15/" class="article-date">
+  <time datetime="2020-02-05T10:18:25.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/05/pythoncodefight-day15/">PythonCodeFight-Day15</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-15"><a href="#Day-15" class="headerlink" title="Day_15"></a>Day_15</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q22-avoidObstacles"><a href="#Q22-avoidObstacles" class="headerlink" title="Q22. avoidObstacles"></a>Q22. avoidObstacles</h2><p>You are given an array of integers representing coordinates of obstacles situated on a straight line.<br>Assume that you are jumping from the point with coordinate 0 to the right. You are allowed only to make jumps of the same length represented by some integer.<br>Find the minimal length of the jump enough to avoid all the obstacles.</p>
+<p>제출 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> gcd</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lcm</span><span class="params">(x,y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x*y // gcd(x,y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        arr.append(lcm(arr.pop(),arr.pop()))</span><br><span class="line">        <span class="keyword">if</span> len(arr) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> arr[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">avoidObstacles</span><span class="params">(inputArray)</span>:</span></span><br><span class="line">    inputArray = [<span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">    inputSort = sorted(inputArray)</span><br><span class="line"></span><br><span class="line">    DiffNum = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(inputSort)<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">if</span> inputSort[i] + <span class="number">1</span> != inputSort[i+<span class="number">1</span>]:</span><br><span class="line">            DiffNum.append(inputSort[i] + <span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">    DiffDiffNum = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(DiffNum)):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            DiffDiffNum.append(DiffNum[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            DiffDiffNum.append(DiffNum[i] - DiffNum[i<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line">    MinLen = solution(DiffDiffNum)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> MinLen</span><br></pre></td></tr></table></figure>
+<p>제출 결과</p>
+<p>2/12 tests passed.</p>
+<p>Click the “Run Tests” button to see output, console logs, and detailed error messages for sample or custom test cases. This information is hidden when clicking the “Submit” button in order to prevent hard-coding solutions to the hidden test cases.</p>
+<p>Sample tests: 2/6</p>
+<p>Hidden tests: 0/6</p>
+<p>Score: 33/300</p>
+<p>각 값의 차이를 구하고, 그 차이 값의 최소공배수를 구해서 넘어가는 방식으로 코드 작성을 해봤는데, 아예 틀린 방법이었나보다.</p>
+<p>작성 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> gcd</span><br><span class="line"></span><br><span class="line"><span class="comment"># inputArray = [5, 3, 6, 7, 9]</span></span><br><span class="line">inputArray = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">6</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 값을 정렬</span></span><br><span class="line">inputSort = sorted(inputArray)</span><br><span class="line"></span><br><span class="line">DiffNum = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 비어있는 부분 찾기</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(inputSort)<span class="number">-1</span>):</span><br><span class="line">    <span class="keyword">if</span> inputSort[i] + <span class="number">1</span> != inputSort[i+<span class="number">1</span>]:</span><br><span class="line">        DiffNum.append(inputSort[i] + <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">print(inputSort)</span><br><span class="line">print(DiffNum)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 비어있는 부분의 간격 계산</span></span><br><span class="line">DiffDiffNum = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(DiffNum)):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">        DiffDiffNum.append(DiffNum[i])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        DiffDiffNum.append(DiffNum[i] - DiffNum[i<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line">print(DiffDiffNum)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 간격들의 최소공배수 구하기</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lcm</span><span class="params">(x,y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x*y // gcd(x,y)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        arr.append(lcm(arr.pop(),arr.pop()))</span><br><span class="line">        <span class="keyword">if</span> len(arr) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> arr[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">MinLen = solution(DiffDiffNum)</span><br><span class="line"></span><br><span class="line">print(MinLen)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/05/pythoncodefight-day15/" data-id="ck695tad70000f8481ae1d3gk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pythoncodefight-day14" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/01/pythoncodefight-day14/" class="article-date">
@@ -528,52 +582,6 @@
 
 
   
-    <article id="post-pythoncodefight-day6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/15/pythoncodefight-day6/" class="article-date">
-  <time datetime="2020-01-15T10:25:30.000Z" itemprop="datePublished">2020-01-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/15/pythoncodefight-day6/">PythonCodeFight-Day6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Day-6"><a href="#Day-6" class="headerlink" title="Day_6"></a>Day_6</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><h2 id="Q11-isLucky"><a href="#Q11-isLucky" class="headerlink" title="Q11. isLucky"></a>Q11. isLucky</h2><p>Ticket numbers usually consist of an even number of digits. A ticket number is considered lucky if the sum of the first half of the digits is equal to the sum of the second half.</p>
-<p>Given a ticket number n, determine if it’s lucky or not.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isLucky</span><span class="params">(n)</span>:</span></span><br><span class="line">    n_str = str(n)</span><br><span class="line"></span><br><span class="line">    n_list = list(n_str)</span><br><span class="line"></span><br><span class="line">    sumFront = <span class="number">0</span></span><br><span class="line">    sumSecond = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(n_list)):</span><br><span class="line">        <span class="keyword">if</span> i &lt; len(n_list)/<span class="number">2</span>:</span><br><span class="line">            sumFront += int(n_list[i])</span><br><span class="line">            print(int(n_list[i]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sumSecond += int(n_list[i])</span><br><span class="line">            print(int(n_list[i]))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> sumFront == sumSecond:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p>고민 흐름</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 테스트 케이스를 바꿔가면서 확인</span></span><br><span class="line">n = <span class="number">234036</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 붙어있는 숫자를 앞과 뒤로 분리해야하기 때문에, 쪼개는 방법을 생각하던 중 입력으로 받은 수를 string으로 변환</span></span><br><span class="line">n_str = str(n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># string으로 변환한 입력을 list로 바꾸면 list로 다룰 수 있게 됨</span></span><br><span class="line">n_list = list(n_str)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 앞의 합과 뒤의 합</span></span><br><span class="line">sumFront = <span class="number">0</span></span><br><span class="line">sumSecond = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 전체 리스트의 값을 순회하기</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(n_list)):</span><br><span class="line">    <span class="comment"># 앞의 반일 경우</span></span><br><span class="line">    <span class="keyword">if</span> i &lt; len(n_list)/<span class="number">2</span>:</span><br><span class="line">        sumFront += int(n_list[i])</span><br><span class="line">        print(int(n_list[i]))</span><br><span class="line">    <span class="comment"># 뒤의 반일 경우</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sumSecond += int(n_list[i])</span><br><span class="line">        print(int(n_list[i]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 값 비교</span></span><br><span class="line"><span class="keyword">if</span> sumFront == sumSecond:</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/15/pythoncodefight-day6/" data-id="ck5f5tsp40000imjdc463ak1e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -602,6 +610,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/05/pythoncodefight-day15/">PythonCodeFight-Day15</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/01/pythoncodefight-day14/">PythonCodeFight-Day14</a>
           </li>
         
@@ -615,10 +627,6 @@
         
           <li>
             <a href="/2020/01/23/pythoncodefight-day11/">PythonCodeFight-Day11</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/20/c-16-sort2d/">[16] 2차원 배열 정렬 (Sort 2D Array)</a>
           </li>
         
       </ul>
