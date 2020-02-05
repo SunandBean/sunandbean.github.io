@@ -64,6 +64,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-c-09-function-basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/12/c-09-function-basic/" class="article-date">
+  <time datetime="2020-01-11T16:27:23.000Z" itemprop="datePublished">2020-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/c/">C</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/12/c-09-function-basic/">[09] 기본적인 함수 내용 (function basic)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C언어-함수-정리"><a href="#C언어-함수-정리" class="headerlink" title="C언어 함수 정리"></a>C언어 함수 정리</h1><p>참고 문헌 (Ch 60): <a href="https://dojang.io/mod/page/view.php?id=521" target="_blank" rel="noopener">https://dojang.io/mod/page/view.php?id=521</a></p>
+<h2 id="Hello-world-출력-함수-만들기"><a href="#Hello-world-출력-함수-만들기" class="headerlink" title="Hello world! 출력 함수 만들기"></a>Hello world! 출력 함수 만들기</h2><h3 id="함수를-정의하는-방법"><a href="#함수를-정의하는-방법" class="headerlink" title="함수를 정의하는 방법"></a>함수를 정의하는 방법</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">반환값자료형 함수이름()</span><br><span class="line">&#123;</span><br><span class="line">    코드;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>예시</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello, world!\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    hello();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="함수-선언과-정의-분리하기"><a href="#함수-선언과-정의-분리하기" class="headerlink" title="함수 선언과 정의 분리하기"></a>함수 선언과 정의 분리하기</h2><p>코드 가독성을 높이기 위해서 메인 함수를 맨 위로 올리기 위해서 필요한 작업. 함수의 원형을 메인 함수 위에 선언해주고, 함수의 내용은 다른 곳에 작성</p>
+<h3 id="반환값자료형-함수이름"><a href="#반환값자료형-함수이름" class="headerlink" title="반환값자료형 함수이름();"></a>반환값자료형 함수이름();</h3><h3 id="용어-설명"><a href="#용어-설명" class="headerlink" title="용어 설명:"></a>용어 설명:</h3><ul>
+<li>함수 원형(function prototype): 함수 선언 부분</li>
+<li>함수 헤더(function header)와 함수 본체(function body): 함수 정의 부분<br>예시<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>;    <span class="comment">// 반환값이 없는 hello 함수 원형 선언, </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    hello();    <span class="comment">// hello 함수 호출</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span>    <span class="comment">// 반환값이 없는 hello 함수 정의</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello, world!\n"</span>);    <span class="comment">// Hello, world! 출력</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/12/c-09-function-basic/" data-id="ck59t9hfg000008jd1z74d7zr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/function/" rel="tag">function</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-01-10" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/12/2020-01-10/" class="article-date">
@@ -559,54 +612,6 @@
 
 
   
-    <article id="post-2020-01-09" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/09/2020-01-09/" class="article-date">
-  <time datetime="2020-01-09T14:26:57.000Z" itemprop="datePublished">2020-01-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/09/2020-01-09/">2020.01.09</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>C언어 공부를 마무리 지었다.</p>
-<p>기초적인 배열부터 함수에서 배열을 주고 받는 부분까지 공부를 끝냈고, 이제 필요한 것들 조합해서 기능 구현하는 함수만 짜면 될 것 같다.</p>
-<p>기능 구현하는 함수를 정리하는 과정을 진행해야하고, c언어 공부는 코딩도장에서 제공하는 자료를 기반으로 했다.</p>
-<p>코딩도장 책을 사서도 봤었는데, 앞부분만 보다가 맨날 그만보고 결국 친구 동생한테 책을 넘겨줬는데, 이번에는 그 뒤에 필요한 모든 부분을 다 봤다.</p>
-<p>생각보다 읽기 힘든 설명 문장들이 있어서 직접 돌려보고 이해한데로 설명을 작성하면서 공부했다.</p>
-<h2 id="오늘의-메모"><a href="#오늘의-메모" class="headerlink" title="오늘의 메모"></a>오늘의 메모</h2><p>vscode에서 C 개발 환경을 만들어놨는데, 인코딩 부분이 맞질 않아서 한글을 프린팅 했을 때 값이 다 깨져서 나온다. 이걸 해결하는 방법을 찾아보거나 그냥 영어만 쓰자</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/09/2020-01-09/" data-id="ck56uehob0000tbjdehzy6qea" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -635,7 +640,11 @@
       <ul>
         
           <li>
-            <a href="/2020/02/05/pythoncodefight-day16/">PythonCodeFight-Day16</a>
+            <a href="/2020/02/05/pythoncodefight-day17/">PythonCodeFight-Day17</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/04/pythoncodefight-day16/">PythonCodeFight-Day16</a>
           </li>
         
           <li>
@@ -648,10 +657,6 @@
         
           <li>
             <a href="/2020/01/27/pythoncodefight-day13/">PythonCodeFight-Day13</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/25/pythoncodefight-day12/">PythonCodeFight-Day12</a>
           </li>
         
       </ul>

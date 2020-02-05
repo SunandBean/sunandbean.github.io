@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-pythoncodefight-day16" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-pythoncodefight-day17" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/05/pythoncodefight-day16/" class="article-date">
-  <time datetime="2020-02-05T14:00:43.000Z" itemprop="datePublished">2020-02-05</time>
+    <a href="/2020/02/05/pythoncodefight-day17/" class="article-date">
+  <time datetime="2020-02-05T14:25:44.000Z" itemprop="datePublished">2020-02-05</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +82,55 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/05/pythoncodefight-day16/">PythonCodeFight-Day16</a>
+      <a class="article-title" href="/2020/02/05/pythoncodefight-day17/">PythonCodeFight-Day17</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-17"><a href="#Day-17" class="headerlink" title="Day_17"></a>Day_17</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q23-Box-Blur"><a href="#Q23-Box-Blur" class="headerlink" title="Q23. Box Blur"></a>Q23. Box Blur</h2><p>Last night you partied a little too hard. Now there’s a black and white photo of you that’s about to go viral! You can’t let this ruin your reputation, so you want to apply the box blur algorithm to the photo to hide its content.</p>
+<p>The pixels in the input image are represented as integers. The algorithm distorts the input image in the following way: Every pixel x in the output image has a value equal to the average value of the pixel values from the 3 × 3 square that has its center at x, including x itself. All the pixels on the border of x are then removed.</p>
+<p>Return the blurred image as an integer, with the fractions rounded down.</p>
+<p>제출 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">boxBlur</span><span class="params">(image)</span>:</span></span><br><span class="line">    Row = len(image)</span><br><span class="line">    Col = len(image[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    BlurSumSet = np.zeros((Row<span class="number">-2</span>,Col<span class="number">-2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, Row<span class="number">-1</span>, <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, Col<span class="number">-1</span>, <span class="number">1</span>):</span><br><span class="line">            BlurSum = int((image[i<span class="number">-1</span>][j<span class="number">-1</span>] + image[i<span class="number">-1</span>][j] + image[i<span class="number">-1</span>][j+<span class="number">1</span>] + image[i][j<span class="number">-1</span>] + image[i][j] + image[i][j+<span class="number">1</span>] + image[i+<span class="number">1</span>][j<span class="number">-1</span>] + image[i+<span class="number">1</span>][j] + image[i+<span class="number">1</span>][j+<span class="number">1</span>])/<span class="number">9</span>)</span><br><span class="line">            BlurSumSet[i<span class="number">-1</span>][j<span class="number">-1</span>] = BlurSum</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> BlurSumSet</span><br></pre></td></tr></table></figure>
+<p>작성 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># test case</span></span><br><span class="line">image = [[<span class="number">7</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>], </span><br><span class="line">         [<span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">2</span>], </span><br><span class="line">         [<span class="number">6</span>, <span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>], </span><br><span class="line">         [<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">0</span>]]</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Row: %d"</span> % (len(image)))</span><br><span class="line">print(<span class="string">"Col: %d"</span> % (len(image[<span class="number">0</span>])))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 행, 열 사이즈 찾기</span></span><br><span class="line">Row = len(image)</span><br><span class="line">Col = len(image[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3x3이면 양쪽 위아래 1개씩 값을 빼야하므로, 각 행, 열 사이즈에서 2씩 뺀 빈 배열 선언</span></span><br><span class="line">BlurSumSet = np.zeros((Row<span class="number">-2</span>,Col<span class="number">-2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, Row<span class="number">-1</span>, <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, Col<span class="number">-1</span>, <span class="number">1</span>):</span><br><span class="line">        print(<span class="string">"Row: %d, Col: %d"</span> % (i, j)) <span class="comment"># center point 찾기</span></span><br><span class="line">        <span class="comment"># BlurSum 찾기</span></span><br><span class="line">        BlurSum = int((image[i<span class="number">-1</span>][j<span class="number">-1</span>] + image[i<span class="number">-1</span>][j] + image[i<span class="number">-1</span>][j+<span class="number">1</span>] + image[i][j<span class="number">-1</span>] + image[i][j] + image[i][j+<span class="number">1</span>] + image[i+<span class="number">1</span>][j<span class="number">-1</span>] + image[i+<span class="number">1</span>][j] + image[i+<span class="number">1</span>][j+<span class="number">1</span>])/<span class="number">9</span>)</span><br><span class="line">        <span class="comment"># set에 넣기</span></span><br><span class="line">        BlurSumSet[i<span class="number">-1</span>][j<span class="number">-1</span>] = BlurSum</span><br><span class="line">        print(BlurSum)</span><br><span class="line">print(BlurSumSet)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/05/pythoncodefight-day17/" data-id="ck69ep0mc0000pk486afb14kn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pythoncodefight-day16" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/04/pythoncodefight-day16/" class="article-date">
+  <time datetime="2020-02-04T14:00:43.000Z" itemprop="datePublished">2020-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/04/pythoncodefight-day16/">PythonCodeFight-Day16</a>
     </h1>
   
 
@@ -98,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/05/pythoncodefight-day16/" data-id="ck69dqxvx0000rk48a0dg98kt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/04/pythoncodefight-day16/" data-id="ck69dqxvx0000rk48a0dg98kt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
@@ -536,53 +584,6 @@
 
 
   
-    <article id="post-pythoncodefight-day8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/18/pythoncodefight-day8/" class="article-date">
-  <time datetime="2020-01-18T13:04:10.000Z" itemprop="datePublished">2020-01-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/18/pythoncodefight-day8/">PythonCodeFight-Day8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Day-8"><a href="#Day-8" class="headerlink" title="Day_8"></a>Day_8</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q13-reverseInParentheses"><a href="#Q13-reverseInParentheses" class="headerlink" title="Q13. reverseInParentheses"></a>Q13. reverseInParentheses</h2><p>Write a function that reverses characters in (possibly nested) parentheses in the input string.</p>
-<p>Input strings will always be well-formed with matching ()s.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseInParentheses</span><span class="params">(inputString)</span>:</span></span><br><span class="line"><span class="comment">#[출처] [python] codeSignal 문제풀이 (13~15)|작성자 Jun</span></span><br><span class="line">    s = inputString</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="string">'('</span> <span class="keyword">in</span> s : <span class="comment">#괄호가 다 없어질때까지 반복</span></span><br><span class="line">        fb = s.rfind(<span class="string">'('</span>) <span class="comment"># rfind : 뒤에서부터 문자열 탐색</span></span><br><span class="line">        bb = s[fb:].find(<span class="string">')'</span>) <span class="comment">#find : 앞에서부터 문자열 탐색</span></span><br><span class="line">        s = s[:fb] + s[fb+<span class="number">1</span>:fb+bb][::<span class="number">-1</span>] + s[fb+bb+<span class="number">1</span>:] <span class="comment">#부분적으로 슬라이스 가능</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
-<p>문제를 못 풀겠어서 코드파이트 같이하는 오픈카톡방 방장님의 코드를 이용했음<br>처음에는 스택을 이용해서 접근하면 어떨까 고민하고 머리를 굴려봤는데, 괄호 안에 괄호가 반복되는 경우를 어떻게 처리해야할지 감이 하나도 오질 않았다. 그렇다고 다른 방법이 떠오르지 않아서 작성해두신 답을 그대로 이용했다.</p>
-<p>이용한 답을 보니 while 뒤에 ‘(‘ in s 와 같은 문법을 이용할 수 있다는 것을 알게 되었다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/18/pythoncodefight-day8/" data-id="ck5miv8gi0001ukjd9ea411gz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -611,7 +612,11 @@
       <ul>
         
           <li>
-            <a href="/2020/02/05/pythoncodefight-day16/">PythonCodeFight-Day16</a>
+            <a href="/2020/02/05/pythoncodefight-day17/">PythonCodeFight-Day17</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/04/pythoncodefight-day16/">PythonCodeFight-Day16</a>
           </li>
         
           <li>
@@ -624,10 +629,6 @@
         
           <li>
             <a href="/2020/01/27/pythoncodefight-day13/">PythonCodeFight-Day13</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/25/pythoncodefight-day12/">PythonCodeFight-Day12</a>
           </li>
         
       </ul>
