@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/09/pythoncodefight-day4/" class="article-date">
+  <time datetime="2020-01-09T10:57:32.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/09/pythoncodefight-day4/">PythonCodeFight-Day4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-4"><a href="#Day-4" class="headerlink" title="Day_4"></a>Day_4</h1><h1 id="Q9-allLongestStrings"><a href="#Q9-allLongestStrings" class="headerlink" title="Q9. allLongestStrings"></a>Q9. allLongestStrings</h1><p>Given an array of strings, return another array containing all of its longest strings.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">allLongestStrings</span><span class="params">(inputArray)</span>:</span></span><br><span class="line">    maxLen = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">        <span class="keyword">if</span> maxLen &lt; len(word):</span><br><span class="line">            maxLen = len(word)</span><br><span class="line"></span><br><span class="line">    maxLenList = list()</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">        <span class="keyword">if</span> len(word) == maxLen:</span><br><span class="line">            maxLenList.append(word)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> maxLenList</span><br></pre></td></tr></table></figure>
+<p>오늘부턴 코드 짜는 과정도 메모해둘 수 있으면 메모해서 올리자</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 문제 파악</span></span><br><span class="line"><span class="comment"># Given an array of strings, return another array containing all of its longest strings.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For inputArray = ["aba", "aa", "ad", "vcd", "aba"], the output should be</span></span><br><span class="line"><span class="comment"># allLongestStrings(inputArray) = ["aba", "vcd", "aba"].</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 입출력 확인</span></span><br><span class="line"><span class="comment"># Input/Output</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [execution time limit] 4 seconds (py3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [input] array.string inputArray</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A non-empty array.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Guaranteed constraints:</span></span><br><span class="line"><span class="comment"># 1 ≤ inputArray.length ≤ 10,</span></span><br><span class="line"><span class="comment"># 1 ≤ inputArray[i].length ≤ 10.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [output] array.string</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Array of the longest strings, stored in the same order as in the inputArray.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 개발 과정 </span></span><br><span class="line">inputArray = [<span class="string">"aba"</span>, <span class="string">"aa"</span>, <span class="string">"ad"</span>, <span class="string">"vcd"</span>, <span class="string">"aba"</span>] <span class="comment"># 제공된 입력 확인</span></span><br><span class="line">print(inputArray)</span><br><span class="line">print(inputArray[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최대 길이 구하기</span></span><br><span class="line">maxLen = <span class="number">0</span> </span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">    <span class="keyword">if</span> maxLen &lt; len(word):</span><br><span class="line">        maxLen = len(word)</span><br><span class="line">print(maxLen)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최대 길이인 리스트 채워넣기</span></span><br><span class="line">maxLenList = list()</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> inputArray:</span><br><span class="line">    <span class="keyword">if</span> len(word) == maxLen:</span><br><span class="line">        maxLenList.append(word)</span><br><span class="line">print(maxLenList)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/09/pythoncodefight-day4/" data-id="ck56mcjbz0000wzjd10v17tak" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-01-08" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/09/2020-01-08/" class="article-date">
@@ -497,60 +542,6 @@
 
 
   
-    <article id="post-2020-01-02" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/03/2020-01-02/" class="article-date">
-  <time datetime="2020-01-02T16:05:20.000Z" itemprop="datePublished">2020-01-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/03/2020-01-02/">2020.01.02</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>Matlab/Simulink으로 짜여진 내비게이션 원본 데이터를 처리하는 부분을 임베디드 시스템에 올리기 위해서 C언어로 작성하는 작업</p>
-<h2 id="작업한-내용"><a href="#작업한-내용" class="headerlink" title="작업한 내용"></a>작업한 내용</h2><p>내비게이션 CAN 메시지 레이아웃 작업<br>내비게이션 데이터를 처리하는 Matlab코드의 큰 틀을 C언어로 옮기는 작업</p>
-<ul>
-<li>SEG, CUR, SLP 처리하는 부분은 시간 관계상 내일이나 토요일부터 다시 진행할 예정</li>
-</ul>
-<h2 id="공부한-내용"><a href="#공부한-내용" class="headerlink" title="공부한 내용"></a>공부한 내용</h2><p>다양한 변수 선언 방식에 대해서 공부함 (union, typedef 등)<br>함수에서 구조체를 반환하는 방법에 대해서 공부함</p>
-<h2 id="공부해야하는-내용"><a href="#공부해야하는-내용" class="headerlink" title="공부해야하는 내용"></a>공부해야하는 내용</h2><p>함수에서 2차원 배열을 반환하는 방법<br>선언한 2차원 배열의 원소 접근을 쉽게 하는 방법<br>2차원 배열의 원소를 크기에 따라 정렬하는 방법</p>
-<h2 id="느낀-점"><a href="#느낀-점" class="headerlink" title="느낀 점"></a>느낀 점</h2><p>오늘 한 일들은 C언어에 대한 감각을 살리는 작업이었다. 짜여진 코딩을 C언어로 옮기면서 C언어 포멧에 대해서 다시 한 번 생각해보고, 자주 쓰는 기능들이 어떤 형식을 가지고 있는지 확인하는 시간이었다.</p>
-<p>Matlab에서 제공해주는 함수를 엄청나게 많이 써서 코딩을 했는데, 이런 함수들이 C언어에서는 구현되어있지 않은게 너무 많아서 직접 다 구현을 해야할 것 같다… 이게 제일 큰 난관이다!</p>
-<p>특히 배열의 여러 원소를 한번에 처리하는 부분을 Matlab에서는 굉장히 간단하게 할 수 있는데, C에서는 하나하나 해줘야하는 것 같아서 고민이다. 물론 Matlab 함수도 들어가보면 결국 하나씩 다 접근하긴 할테지만 그걸 내가 직접 짜야한다니…</p>
-<p>이번 기회에 C 개발 실력도 늘리고 공통적으로 쓸 수 있는 코드를 만들어서 가지고 있으면 나중에 쓸 때에는 바로 가져다 쓰면 되니까 괜찮을 것 같긴 하다.</p>
-<p>그리고 생각보다 static으로 선언해줘야하는 배열의 숫자가 많아서 메모리 이슈가 생길 것 같은 불길한 예감이 든다.. 마르코프 체인을 RAM에 올릴 때 RAM 부족 때문에 프로세스가 종료되는 일이 일어날 것 같은 불길한 기분! 이 부분에 대해서 인지하고 있자.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/03/2020-01-02/" data-id="ck50izecx0000mjjdcxf73nnl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -579,6 +570,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/05/pythoncodefight-day16/">PythonCodeFight-Day16</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/03/pythoncodefight-day15/">PythonCodeFight-Day15</a>
           </li>
         
@@ -592,10 +587,6 @@
         
           <li>
             <a href="/2020/01/25/pythoncodefight-day12/">PythonCodeFight-Day12</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/23/pythoncodefight-day11/">PythonCodeFight-Day11</a>
           </li>
         
       </ul>

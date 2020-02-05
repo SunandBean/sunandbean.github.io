@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/15/pythoncodefight-day7/" class="article-date">
+  <time datetime="2020-01-15T10:25:58.000Z" itemprop="datePublished">2020-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/15/pythoncodefight-day7/">PythonCodeFight-Day7</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-7"><a href="#Day-7" class="headerlink" title="Day_7"></a>Day_7</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><h2 id="Q12-Sort-by-Height"><a href="#Q12-Sort-by-Height" class="headerlink" title="Q12. Sort by Height"></a>Q12. Sort by Height</h2><p>Some people are standing in a row in a park. There are trees between them which cannot be moved. Your task is to rearrange the people by their heights in a non-descending order without moving the trees. People can be very tall!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sortByHeight</span><span class="params">(a)</span>:</span></span><br><span class="line">    IdxSet_minus1 = []</span><br><span class="line"></span><br><span class="line">    sort_a = []</span><br><span class="line">    cnt_minus1 = <span class="number">0</span></span><br><span class="line">    cnt_sort = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">        <span class="keyword">if</span> a[i] == <span class="number">-1</span>:</span><br><span class="line">            IdxSet_minus1.append(i)</span><br><span class="line"></span><br><span class="line">    b = sorted(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(IdxSet_minus1)):</span><br><span class="line">        b.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">        <span class="keyword">if</span> cnt_minus1 &lt; len(IdxSet_minus1):</span><br><span class="line">            <span class="keyword">if</span> i == IdxSet_minus1[cnt_minus1]:</span><br><span class="line">                sort_a.append(<span class="number">-1</span>)</span><br><span class="line">                cnt_minus1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                sort_a.append(b[cnt_sort])</span><br><span class="line">                cnt_sort += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sort_a.append(b[cnt_sort])</span><br><span class="line">            cnt_sort += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sort_a</span><br></pre></td></tr></table></figure>
+<p>고민 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 테스트 케이스</span></span><br><span class="line">a = [<span class="number">-1</span>, <span class="number">150</span>, <span class="number">190</span>, <span class="number">170</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">160</span>, <span class="number">180</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># -1인 인덱스를 저장할 공간</span></span><br><span class="line">IdxSet_minus1 = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 새롭게 정렬한 값을 넣어줄 공간</span></span><br><span class="line">sort_a = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 두 가지의 행렬을 비교해서 값을 넣을 것이기 때문에, 각 값의 인덱스</span></span><br><span class="line">cnt_minus1 = <span class="number">0</span></span><br><span class="line">cnt_sort = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># '-1' 이 들어있는 위치의 인덱스를 모으기</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">    <span class="keyword">if</span> a[i] == <span class="number">-1</span>:</span><br><span class="line">        IdxSet_minus1.append(i)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 주어진 케이스를 오름차순으로 정렬</span></span><br><span class="line">b = sorted(a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 정렬한 케이스에서 -1 값 빼내기</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(IdxSet_minus1)):</span><br><span class="line">    b.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 배열의 전체 길이만큼 반복</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">    <span class="comment"># 만약, 넣어야하는 -1 이 남아있는 경우</span></span><br><span class="line">    <span class="keyword">if</span> cnt_minus1 &lt; len(IdxSet_minus1):</span><br><span class="line">        <span class="comment"># 찾아둔 -1 의 인덱스 값인 경우</span></span><br><span class="line">        <span class="keyword">if</span> i == IdxSet_minus1[cnt_minus1]:</span><br><span class="line">            sort_a.append(<span class="number">-1</span>)</span><br><span class="line">            cnt_minus1 += <span class="number">1</span></span><br><span class="line">        <span class="comment"># 찾아둔 -1 의 인덱스 값이 아닌 경우</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sort_a.append(b[cnt_sort])</span><br><span class="line">            cnt_sort += <span class="number">1</span></span><br><span class="line">    <span class="comment"># -1 이 더이상 없는 경우</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sort_a.append(b[cnt_sort])</span><br><span class="line">        cnt_sort += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/15/pythoncodefight-day7/" data-id="ck5f5tsp70001imjd097b9lgf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pythoncodefight-day6" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/15/pythoncodefight-day6/" class="article-date">
@@ -570,51 +615,6 @@
 
 
   
-    <article id="post-2020-01-10" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/12/2020-01-10/" class="article-date">
-  <time datetime="2020-01-11T16:23:21.000Z" itemprop="datePublished">2020-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/00-diary/">00_Diary</a>►<a class="article-category-link" href="/categories/00-diary/dailydev/">DailyDev.</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/2020-01-10/">2020.01.10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="오늘의-개발"><a href="#오늘의-개발" class="headerlink" title="오늘의 개발"></a>오늘의 개발</h1><p>오늘은 논문 포멧팅을 위해서 Latex 문법을 공부한 날이다. 문법 공부하면서 포멧팅도 해보고 굉장히 뿌듯했다.</p>
-<p>내비 처리 관련해서 코딩을 마저 해야하는데 내키지 않아서 계속 미루게 된다…</p>
-<h1 id="메모"><a href="#메모" class="headerlink" title="메모"></a>메모</h1><p>Latex가 생각보다 코딩하기가 빡셌다. 아직 많이 다뤄보지 않아서 그런 것도 있는데, 어떤 기능을 어떻게 구현해야하는지가 아직 와닿지 않아서 그런 것 같다. 그래도 HTML이나 Markdown류의 문서 및 코딩 스타일을 작성해본 경험 때문인지 금방 배운 것 같다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/2020-01-10/" data-id="ck59sx18y0000fljdg5o9c8me" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -643,6 +643,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/05/pythoncodefight-day16/">PythonCodeFight-Day16</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/03/pythoncodefight-day15/">PythonCodeFight-Day15</a>
           </li>
         
@@ -656,10 +660,6 @@
         
           <li>
             <a href="/2020/01/25/pythoncodefight-day12/">PythonCodeFight-Day12</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/23/pythoncodefight-day11/">PythonCodeFight-Day11</a>
           </li>
         
       </ul>
