@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day18" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/08/pythoncodefight-day18/" class="article-date">
+  <time datetime="2020-02-08T14:56:43.000Z" itemprop="datePublished">2020-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/08/pythoncodefight-day18/">PythonCodeFight-Day18</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-18"><a href="#Day-18" class="headerlink" title="Day_18"></a>Day_18</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q24-Mindsweeper"><a href="#Q24-Mindsweeper" class="headerlink" title="Q24. Mindsweeper"></a>Q24. Mindsweeper</h2><p>In the popular Minesweeper game you have a board with some mines and those cells that don’t contain a mine have a number in it that indicates the total number of mines in the neighboring cells. Starting off with some arrangement of mines we want to create a Minesweeper game setup.</p>
+<p>작성 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Test case</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">matrix = [[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>],</span><br><span class="line">          [<span class="literal">False</span>, <span class="literal">True</span>, <span class="literal">False</span>],</span><br><span class="line">          [<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 알고리즘 생각해보기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 만약 현재 값이 true인 경우, 현재 인덱스의 값은 1</span></span><br><span class="line"><span class="comment"># 만약 현재 값이 false인 경우, 현재 인덱스의 값은 현재 위치 값의 주위에 true 개수</span></span><br><span class="line"></span><br><span class="line">row = len(matrix)</span><br><span class="line">col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">MineCounterMat = np.zeros((row, col))</span><br><span class="line"></span><br><span class="line">print(row)</span><br><span class="line">print(col)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx_row <span class="keyword">in</span> range(row):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> idx_col <span class="keyword">in</span> range(col): </span><br><span class="line"></span><br><span class="line">        MineCounter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        CurrVal = matrix[idx_row][idx_col]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> idx_row == <span class="number">0</span>:</span><br><span class="line">            idx_row_set = [idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> idx_row == row:</span><br><span class="line">            idx_row_set = [idx_row - <span class="number">1</span>, idx_row]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> idx_col == <span class="number">0</span>:</span><br><span class="line">            idx_col_set = [idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> idx_col == col:</span><br><span class="line">            idx_col_set = [idx_col - <span class="number">1</span>, idx_col]</span><br><span class="line"></span><br><span class="line">        print(idx_row_set)</span><br><span class="line">        print(idx_col_set)</span><br><span class="line">        <span class="keyword">for</span> mine_row <span class="keyword">in</span> idx_row_set:</span><br><span class="line">            <span class="keyword">for</span> mine_col <span class="keyword">in</span> idx_col_set:</span><br><span class="line">                <span class="keyword">if</span> matrix[mine_row][mine_col]:</span><br><span class="line">                    print(mine_row)</span><br><span class="line">                    print(mine_col)</span><br><span class="line">                    MineCounter = MineCounter + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        MineCounterMat[idx_row][idx_col] = MineCounter</span><br><span class="line"></span><br><span class="line">print(MineCounterMat)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/08/pythoncodefight-day18/" data-id="ck6f5j4ls00007448hfee7mlo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pythoncodefight-day17" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/05/pythoncodefight-day17/" class="article-date">
@@ -534,56 +578,6 @@
 
 
   
-    <article id="post-pythoncodefight-day9" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/19/pythoncodefight-day9/" class="article-date">
-  <time datetime="2020-01-19T13:14:17.000Z" itemprop="datePublished">2020-01-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/19/pythoncodefight-day9/">PythonCodeFight-Day9</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Day-9"><a href="#Day-9" class="headerlink" title="Day_9"></a>Day_9</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q14-alternatingSums"><a href="#Q14-alternatingSums" class="headerlink" title="Q14. alternatingSums"></a>Q14. alternatingSums</h2><p>Several people are standing in a row and need to be divided into two teams. The first person goes into team 1, the second goes into team 2, the third goes into team 1 again, the fourth into team 2, and so on.</p>
-<p>You are given an array of positive integers - the weights of the people. Return an array of two integers, where the first element is the total weight of team 1, and the second element is the total weight of team 2 after the division is complete.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">alternatingSums</span><span class="params">(a)</span>:</span></span><br><span class="line">    team1 = <span class="number">0</span></span><br><span class="line">    team2 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(a)):</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>: <span class="comment"># 2로 나눈 나머지가 0인 경우</span></span><br><span class="line">            team1 += a[i]</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># 2로 나눈 나머지가 1인 경우</span></span><br><span class="line">            team2 += a[i]</span><br><span class="line"></span><br><span class="line">    Sums = list()</span><br><span class="line">    Sums.append(team1)</span><br><span class="line">    Sums.append(team2)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> Sums</span><br></pre></td></tr></table></figure>
-<p>처음에 리스트로 만들어서 합산을 하려고 했는데, 굳이 리스트 없이 홀수끼리의 합과 짝수끼리의 합을 구해서 배열에 넣고 리턴하면 되는 것이었다. 복잡하게 생각할 필요 없었던 문제</p>
-<h2 id="Q15-Add-Border"><a href="#Q15-Add-Border" class="headerlink" title="Q15. Add Border"></a>Q15. Add Border</h2><p>Given a rectangular matrix of characters, add a border of asterisks(*) to it.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addBorder</span><span class="params">(picture)</span>:</span></span><br><span class="line"></span><br><span class="line">    border = <span class="string">"*"</span>*(len(picture[<span class="number">0</span>])+<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(picture)):</span><br><span class="line">        picture[i] = <span class="string">"*"</span>+picture[i]+<span class="string">"*"</span></span><br><span class="line">    </span><br><span class="line">    picture.insert(<span class="number">0</span>,border)</span><br><span class="line">    picture.append(border)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> picture</span><br></pre></td></tr></table></figure>
-<p>작성 흐름</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 테스트 케이스</span></span><br><span class="line">picture = [<span class="string">"abc"</span>,</span><br><span class="line">           <span class="string">"ded"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 케이스 출력해보기</span></span><br><span class="line">print(picture)</span><br><span class="line"><span class="comment"># 첫 단어의 사이즈 확인해보기</span></span><br><span class="line">print(picture[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># string 자료형의 경우 문자열을 더하여 문자열을 늘릴 수 있음</span></span><br><span class="line">print(<span class="string">"*"</span> + picture[<span class="number">0</span>] + <span class="string">"*"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 위 아래 테두리 형태 만들기</span></span><br><span class="line">border = <span class="string">"*"</span>*(len(picture[<span class="number">0</span>])+<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 기존 단어에 테두리 추가하기</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(picture)):</span><br><span class="line">    picture[i] = <span class="string">"*"</span>+picture[i]+<span class="string">"*"</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 테두리가 추가된 입력에 위아래 테두리 추가하기</span></span><br><span class="line">picture.insert(<span class="number">0</span>,border)</span><br><span class="line">picture.append(border)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 출력해서 확인</span></span><br><span class="line">print(picture)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/pythoncodefight-day9/" data-id="ck5miv8gk0003ukjd0q1x3cnf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -612,6 +606,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/08/pythoncodefight-day18/">PythonCodeFight-Day18</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/05/pythoncodefight-day17/">PythonCodeFight-Day17</a>
           </li>
         
@@ -625,10 +623,6 @@
         
           <li>
             <a href="/2020/02/01/pythoncodefight-day14/">PythonCodeFight-Day14</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/27/pythoncodefight-day13/">PythonCodeFight-Day13</a>
           </li>
         
       </ul>
