@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day19" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/pythoncodefight-day19/" class="article-date">
+  <time datetime="2020-02-09T15:24:28.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/pythoncodefight-day19/">PythonCodeFight-Day19</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-19"><a href="#Day-19" class="headerlink" title="Day 19"></a>Day 19</h1><h1 id="Q25-Minesweeper"><a href="#Q25-Minesweeper" class="headerlink" title="Q25. Minesweeper"></a>Q25. Minesweeper</h1><p>In the popular Minesweeper game you have a board with some mines and those cells that don’t contain a mine have a number in it that indicates the total number of mines in the neighboring cells. Starting off with some arrangement of mines we want to create a Minesweeper game setup.</p>
+<p>제출 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">minesweeper</span><span class="params">(matrix)</span>:</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">minesweeper</span><span class="params">(matrix)</span>:</span></span><br><span class="line">    row = len(matrix)</span><br><span class="line">    col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    MineCounterMat = np.zeros((row, col))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> idx_row <span class="keyword">in</span> range(row):</span><br><span class="line">        <span class="keyword">for</span> idx_col <span class="keyword">in</span> range(col): </span><br><span class="line">            MineCounter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> idx_row == <span class="number">0</span>:</span><br><span class="line">                idx_row_set = [idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> idx_row == row<span class="number">-1</span>:</span><br><span class="line">                idx_row_set = [idx_row - <span class="number">1</span>, idx_row]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                idx_row_set = [idx_row - <span class="number">1</span>, idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> idx_col == <span class="number">0</span>:</span><br><span class="line">                idx_col_set = [idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> idx_col == col<span class="number">-1</span>:</span><br><span class="line">                idx_col_set = [idx_col - <span class="number">1</span>, idx_col]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                idx_col_set = [idx_col - <span class="number">1</span>, idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> mine_row <span class="keyword">in</span> idx_row_set:</span><br><span class="line">                <span class="keyword">for</span> mine_col <span class="keyword">in</span> idx_col_set:</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> ((mine_row == idx_row) <span class="keyword">and</span> (mine_col == idx_col)):</span><br><span class="line">                        <span class="keyword">if</span> matrix[mine_row][mine_col]:</span><br><span class="line">                            MineCounter = MineCounter + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            MineCounterMat[idx_row][idx_col] = MineCounter</span><br><span class="line">    <span class="keyword">return</span> MineCounterMat</span><br></pre></td></tr></table></figure>
+<p>작성 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Test case</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">matrix = [[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>],</span><br><span class="line">          [<span class="literal">False</span>, <span class="literal">True</span>, <span class="literal">False</span>],</span><br><span class="line">          [<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 알고리즘 생각해보기</span></span><br><span class="line"><span class="comment"># 자기 자신의 값을 제외하고, 현재 인덱스의 지뢰 개수는 현재 위치 값의 주위에 있는 true 값의 개수</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 행의 갯수</span></span><br><span class="line">row = len(matrix)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 열의 갯수</span></span><br><span class="line">col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 지뢰 개수를 담을 매트릭스</span></span><br><span class="line">MineCounterMat = np.zeros((row, col))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 매트릭스 확인</span></span><br><span class="line">print(matrix)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 행, 열 개수 확인</span></span><br><span class="line">print(row)</span><br><span class="line">print(col)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 전체 매트릭스의 인덱스에 대해 반복</span></span><br><span class="line"><span class="keyword">for</span> idx_row <span class="keyword">in</span> range(row):</span><br><span class="line">    <span class="keyword">for</span> idx_col <span class="keyword">in</span> range(col): </span><br><span class="line"></span><br><span class="line">        <span class="comment"># 주위의 지뢰 갯수 찾기</span></span><br><span class="line">        MineCounter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 매트릭스의 테두리 부분은 주위 개수가 다르기 때문에 인덱스를 지정해주어야함</span></span><br><span class="line">        <span class="comment"># 행 인덱스 지정</span></span><br><span class="line">        <span class="keyword">if</span> idx_row == <span class="number">0</span>:</span><br><span class="line">            idx_row_set = [idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">elif</span> idx_row == row<span class="number">-1</span>:</span><br><span class="line">            idx_row_set = [idx_row - <span class="number">1</span>, idx_row]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_row_set = [idx_row - <span class="number">1</span>, idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 열 인덱스 지정</span></span><br><span class="line">        <span class="keyword">if</span> idx_col == <span class="number">0</span>:</span><br><span class="line">            idx_col_set = [idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">elif</span> idx_col == col<span class="number">-1</span>:</span><br><span class="line">            idx_col_set = [idx_col - <span class="number">1</span>, idx_col]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_col_set = [idx_col - <span class="number">1</span>, idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 지정한 인덱스 확인</span></span><br><span class="line">        print(idx_row_set)</span><br><span class="line">        print(idx_col_set)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 지정한 인덱스에 대해서 반복</span></span><br><span class="line">        <span class="keyword">for</span> mine_row <span class="keyword">in</span> idx_row_set:</span><br><span class="line">            <span class="keyword">for</span> mine_col <span class="keyword">in</span> idx_col_set:</span><br><span class="line">                print(<span class="string">"row: %d, col: %d"</span> % (idx_row, idx_col))</span><br><span class="line">                print(<span class="string">"mine_row: %d, mine_col: %d"</span> % (mine_row, mine_col))</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 자기 자신을 제외한 주위의 값을 확인해서 지뢰 개수 세기</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ((mine_row == idx_row) <span class="keyword">and</span> (mine_col == idx_col)):</span><br><span class="line">                    <span class="keyword">if</span> matrix[mine_row][mine_col]:</span><br><span class="line">                        MineCounter = MineCounter + <span class="number">1</span></span><br><span class="line">                        print(<span class="string">"Mine Counter: %d"</span> % (MineCounter))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 현재 인덱스에 지뢰 개수 넣기</span></span><br><span class="line">        MineCounterMat[idx_row][idx_col] = MineCounter</span><br><span class="line">        print(MineCounterMat)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/10/pythoncodefight-day19/" data-id="ck6f6hy720000y0482n058kfr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pythoncodefight-day18" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/08/pythoncodefight-day18/" class="article-date">
@@ -532,52 +578,6 @@
 
 
   
-    <article id="post-pythoncodefight-day10" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/20/pythoncodefight-day10/" class="article-date">
-  <time datetime="2020-01-20T14:04:16.000Z" itemprop="datePublished">2020-01-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/20/pythoncodefight-day10/">PythonCodeFight-Day10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Day-10"><a href="#Day-10" class="headerlink" title="Day_10"></a>Day_10</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q16-Are-Similar"><a href="#Q16-Are-Similar" class="headerlink" title="Q16. Are Similar?"></a>Q16. Are Similar?</h2><p>Two arrays are called similar if one can be obtained from another by swapping at most one pair of elements in one of the arrays.</p>
-<p>Given two arrays a and b, check whether they are similar.<br>제출 코드</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">areSimilar</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a == b: <span class="comment"># 둘이 같으면 참</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>: <span class="comment"># 다를 때</span></span><br><span class="line">        <span class="comment"># 정렬한 값이 같은 경우, 스왑해야하는 갯수를 체크하면 된다</span></span><br><span class="line">        c = sorted(a) </span><br><span class="line">        d = sorted(b)</span><br><span class="line">        diffCount = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 정렬한 값이 같은 경우</span></span><br><span class="line">        <span class="keyword">if</span> c == d:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(c)):</span><br><span class="line">                <span class="keyword">if</span> a[i] != b[i]:</span><br><span class="line">                    diffCount += <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> diffCount &gt; <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 정렬한 값이 다른 경우</span></span><br><span class="line">        <span class="keyword">else</span>:    </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p>작성 흐름 (제출 코드에도 같은 주석)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 테스트 케이스</span></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> a == b: <span class="comment"># 둘이 같으면 참</span></span><br><span class="line">    print(<span class="string">"True"</span>)</span><br><span class="line"><span class="keyword">else</span>: <span class="comment"># 다를 때</span></span><br><span class="line">    <span class="comment"># 정렬한 값이 같은 경우, 스왑해야하는 갯수를 체크하면 된다</span></span><br><span class="line">    c = sorted(a) </span><br><span class="line">    d = sorted(b)</span><br><span class="line">    diffCount = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 정렬한 값이 같은 경우</span></span><br><span class="line">    <span class="keyword">if</span> c == d:</span><br><span class="line">        <span class="comment"># 전체 길이만큼 보면서</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(c)):</span><br><span class="line">            <span class="comment"># 원래 값에서 차이가 있는 갯수를 센다</span></span><br><span class="line">            <span class="keyword">if</span> a[i] != b[i]:</span><br><span class="line">                diffCount += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 차이 값이 2개인 경우 한 번 스왑을 해서 해결할 수 있지만, 그 이상인 경우 한 번으로 해결 불가능</span></span><br><span class="line">            <span class="keyword">if</span> diffCount &gt; <span class="number">2</span>:</span><br><span class="line">                print(<span class="string">"False"</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">"True"</span>)</span><br><span class="line">    <span class="comment"># 정렬한 값이 다른 경우</span></span><br><span class="line">    <span class="keyword">else</span>:    </span><br><span class="line">        print(<span class="string">"False"</span>)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/20/pythoncodefight-day10/" data-id="ck5miv8gg0000ukjddfsu3o1n" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -606,6 +606,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/10/pythoncodefight-day19/">PythonCodeFight-Day19</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/08/pythoncodefight-day18/">PythonCodeFight-Day18</a>
           </li>
         
@@ -619,10 +623,6 @@
         
           <li>
             <a href="/2020/02/03/pythoncodefight-day15/">PythonCodeFight-Day15</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/01/pythoncodefight-day14/">PythonCodeFight-Day14</a>
           </li>
         
       </ul>

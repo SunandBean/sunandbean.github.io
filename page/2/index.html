@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pythoncodefight-day10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/20/pythoncodefight-day10/" class="article-date">
+  <time datetime="2020-01-20T14:04:16.000Z" itemprop="datePublished">2020-01-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/20/pythoncodefight-day10/">PythonCodeFight-Day10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-10"><a href="#Day-10" class="headerlink" title="Day_10"></a>Day_10</h1><h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><h2 id="Q16-Are-Similar"><a href="#Q16-Are-Similar" class="headerlink" title="Q16. Are Similar?"></a>Q16. Are Similar?</h2><p>Two arrays are called similar if one can be obtained from another by swapping at most one pair of elements in one of the arrays.</p>
+<p>Given two arrays a and b, check whether they are similar.<br>제출 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">areSimilar</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a == b: <span class="comment"># 둘이 같으면 참</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>: <span class="comment"># 다를 때</span></span><br><span class="line">        <span class="comment"># 정렬한 값이 같은 경우, 스왑해야하는 갯수를 체크하면 된다</span></span><br><span class="line">        c = sorted(a) </span><br><span class="line">        d = sorted(b)</span><br><span class="line">        diffCount = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 정렬한 값이 같은 경우</span></span><br><span class="line">        <span class="keyword">if</span> c == d:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(c)):</span><br><span class="line">                <span class="keyword">if</span> a[i] != b[i]:</span><br><span class="line">                    diffCount += <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> diffCount &gt; <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 정렬한 값이 다른 경우</span></span><br><span class="line">        <span class="keyword">else</span>:    </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>작성 흐름 (제출 코드에도 같은 주석)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 테스트 케이스</span></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> a == b: <span class="comment"># 둘이 같으면 참</span></span><br><span class="line">    print(<span class="string">"True"</span>)</span><br><span class="line"><span class="keyword">else</span>: <span class="comment"># 다를 때</span></span><br><span class="line">    <span class="comment"># 정렬한 값이 같은 경우, 스왑해야하는 갯수를 체크하면 된다</span></span><br><span class="line">    c = sorted(a) </span><br><span class="line">    d = sorted(b)</span><br><span class="line">    diffCount = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 정렬한 값이 같은 경우</span></span><br><span class="line">    <span class="keyword">if</span> c == d:</span><br><span class="line">        <span class="comment"># 전체 길이만큼 보면서</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(c)):</span><br><span class="line">            <span class="comment"># 원래 값에서 차이가 있는 갯수를 센다</span></span><br><span class="line">            <span class="keyword">if</span> a[i] != b[i]:</span><br><span class="line">                diffCount += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 차이 값이 2개인 경우 한 번 스왑을 해서 해결할 수 있지만, 그 이상인 경우 한 번으로 해결 불가능</span></span><br><span class="line">            <span class="keyword">if</span> diffCount &gt; <span class="number">2</span>:</span><br><span class="line">                print(<span class="string">"False"</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">"True"</span>)</span><br><span class="line">    <span class="comment"># 정렬한 값이 다른 경우</span></span><br><span class="line">    <span class="keyword">else</span>:    </span><br><span class="line">        print(<span class="string">"False"</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/20/pythoncodefight-day10/" data-id="ck5miv8gg0000ukjddfsu3o1n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-pythoncodefight-day9" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/19/pythoncodefight-day9/" class="article-date">
@@ -526,64 +572,6 @@
 
 
   
-    <article id="post-c-11-function-inputvariables" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/12/c-11-function-inputvariables/" class="article-date">
-  <time datetime="2020-01-11T16:30:36.000Z" itemprop="datePublished">2020-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/c/">C</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/c-11-function-inputvariables/">[11] 함수 입력 이용하기 (function input variables)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C언어-함수-정리"><a href="#C언어-함수-정리" class="headerlink" title="C언어 함수 정리"></a>C언어 함수 정리</h1><p>참고 문헌 (Ch 62): <a href="https://dojang.io/mod/page/view.php?id=541" target="_blank" rel="noopener">https://dojang.io/mod/page/view.php?id=541</a></p>
-<h2 id="매개변수-사용하기"><a href="#매개변수-사용하기" class="headerlink" title="매개변수 사용하기"></a>매개변수 사용하기</h2><p>입력을 받아서 이용하는 방법</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">반환값자료형 함수이름(자료형 매개변수)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>예시</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">helloNumber</span><span class="params">(<span class="keyword">int</span> num1)</span>    <span class="comment">// 반환값 없음, int형 매개변수 한 개 지정</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello, %d\n"</span>, num1);    <span class="comment">// Hello, 와 매개변수를 조합하여 문자열 출력</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    helloNumber(<span class="number">10</span>);    <span class="comment">// Hello, 10: helloNumber에 10을 넣어서 호출</span></span><br><span class="line">    helloNumber(<span class="number">20</span>);    <span class="comment">// Hello, 20: helloNumber에 20을 넣어서 호출</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="덧셈함수-만들기"><a href="#덧셈함수-만들기" class="headerlink" title="덧셈함수 만들기"></a>덧셈함수 만들기</h2><p>간단한 함수를 통해 여러 개의 매개변수를 다루는 방법에 대해서 확인</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">반환값자료형 함수이름(자료형 매개변수<span class="number">1</span>, 자료형 매개변수<span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>예시</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int add(int a, int b)    &#x2F;&#x2F; 반환값 자료형은 int, int형 매개변수 두 개 지정</span><br><span class="line">&#123;</span><br><span class="line">    return a + b;    &#x2F;&#x2F; 매개변수 a와 b를 더한 결과를 반환</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int num1;</span><br><span class="line"></span><br><span class="line">    num1 &#x3D; add(10, 20);     &#x2F;&#x2F; 함수를 호출할 때 10과 20을 전달. 10과 20을 더한 값인 30이 반환됨</span><br><span class="line"></span><br><span class="line">    printf(&quot;%d\n&quot;, num1);   &#x2F;&#x2F; 30</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="용어-정리"><a href="#용어-정리" class="headerlink" title="용어 정리"></a>용어 정리</h3><p>매개변수, 파라미터, 인자, 인수, 아규먼트와 같이 함수에 들어가는 값에는 다양한 명칭 존재\</p>
-<ul>
-<li>매개변수, 파라미터, 형식 매개변수, 인자: 함수 바깥에서 전달된 값이 저장되는 변수<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//          매개변수</span></span><br><span class="line"><span class="comment">//          ↓     ↓</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>인수, 전달인자, 실행 전달인자: 함수를 호출할 때 전달하는 값이나 변수<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//          매개변수</span></span><br><span class="line"><span class="comment">//          ↓     ↓</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/c-11-function-inputvariables/" data-id="ck59t9hfk000308jdfz46hz3i" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/input/" rel="tag">input</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -612,6 +600,10 @@
       <ul>
         
           <li>
+            <a href="/2020/02/10/pythoncodefight-day19/">PythonCodeFight-Day19</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/08/pythoncodefight-day18/">PythonCodeFight-Day18</a>
           </li>
         
@@ -625,10 +617,6 @@
         
           <li>
             <a href="/2020/02/03/pythoncodefight-day15/">PythonCodeFight-Day15</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/01/pythoncodefight-day14/">PythonCodeFight-Day14</a>
           </li>
         
       </ul>

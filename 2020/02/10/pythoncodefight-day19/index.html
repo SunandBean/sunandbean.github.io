@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PythonCodeFight-Day19 | SB-Dev-Note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Day 19Q25. MinesweeperIn the popular Minesweeper game you have a board with some mines and those cells that don’t contain a mine have a number in it that indicates the total number of mines in the nei">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PythonCodeFight-Day19">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/pythoncodefight-day19/index.html">
+<meta property="og:site_name" content="SB-Dev-Note">
+<meta property="og:description" content="Day 19Q25. MinesweeperIn the popular Minesweeper game you have a board with some mines and those cells that don’t contain a mine have a number in it that indicates the total number of mines in the nei">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-09T15:24:28.000Z">
+<meta property="article:modified_time" content="2020-02-09T15:24:38.273Z">
+<meta property="article:author" content="Sunbin Vincent Kim">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="CodeSignal">
+<meta property="article:tag" content="CodeFight">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="SB-Dev-Note" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SB-Dev-Note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-pythoncodefight-day19" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/pythoncodefight-day19/" class="article-date">
+  <time datetime="2020-02-09T15:24:28.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/01-study/">01_Study</a>►<a class="article-category-link" href="/categories/01-study/python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PythonCodeFight-Day19
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Day-19"><a href="#Day-19" class="headerlink" title="Day 19"></a>Day 19</h1><h1 id="Q25-Minesweeper"><a href="#Q25-Minesweeper" class="headerlink" title="Q25. Minesweeper"></a>Q25. Minesweeper</h1><p>In the popular Minesweeper game you have a board with some mines and those cells that don’t contain a mine have a number in it that indicates the total number of mines in the neighboring cells. Starting off with some arrangement of mines we want to create a Minesweeper game setup.</p>
+<p>제출 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">minesweeper</span><span class="params">(matrix)</span>:</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">minesweeper</span><span class="params">(matrix)</span>:</span></span><br><span class="line">    row = len(matrix)</span><br><span class="line">    col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    MineCounterMat = np.zeros((row, col))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> idx_row <span class="keyword">in</span> range(row):</span><br><span class="line">        <span class="keyword">for</span> idx_col <span class="keyword">in</span> range(col): </span><br><span class="line">            MineCounter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> idx_row == <span class="number">0</span>:</span><br><span class="line">                idx_row_set = [idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> idx_row == row<span class="number">-1</span>:</span><br><span class="line">                idx_row_set = [idx_row - <span class="number">1</span>, idx_row]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                idx_row_set = [idx_row - <span class="number">1</span>, idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> idx_col == <span class="number">0</span>:</span><br><span class="line">                idx_col_set = [idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> idx_col == col<span class="number">-1</span>:</span><br><span class="line">                idx_col_set = [idx_col - <span class="number">1</span>, idx_col]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                idx_col_set = [idx_col - <span class="number">1</span>, idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> mine_row <span class="keyword">in</span> idx_row_set:</span><br><span class="line">                <span class="keyword">for</span> mine_col <span class="keyword">in</span> idx_col_set:</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> ((mine_row == idx_row) <span class="keyword">and</span> (mine_col == idx_col)):</span><br><span class="line">                        <span class="keyword">if</span> matrix[mine_row][mine_col]:</span><br><span class="line">                            MineCounter = MineCounter + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            MineCounterMat[idx_row][idx_col] = MineCounter</span><br><span class="line">    <span class="keyword">return</span> MineCounterMat</span><br></pre></td></tr></table></figure>
+<p>작성 흐름</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Test case</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">matrix = [[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>],</span><br><span class="line">          [<span class="literal">False</span>, <span class="literal">True</span>, <span class="literal">False</span>],</span><br><span class="line">          [<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 알고리즘 생각해보기</span></span><br><span class="line"><span class="comment"># 자기 자신의 값을 제외하고, 현재 인덱스의 지뢰 개수는 현재 위치 값의 주위에 있는 true 값의 개수</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 행의 갯수</span></span><br><span class="line">row = len(matrix)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 열의 갯수</span></span><br><span class="line">col = len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 지뢰 개수를 담을 매트릭스</span></span><br><span class="line">MineCounterMat = np.zeros((row, col))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 매트릭스 확인</span></span><br><span class="line">print(matrix)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 행, 열 개수 확인</span></span><br><span class="line">print(row)</span><br><span class="line">print(col)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 전체 매트릭스의 인덱스에 대해 반복</span></span><br><span class="line"><span class="keyword">for</span> idx_row <span class="keyword">in</span> range(row):</span><br><span class="line">    <span class="keyword">for</span> idx_col <span class="keyword">in</span> range(col): </span><br><span class="line"></span><br><span class="line">        <span class="comment"># 주위의 지뢰 갯수 찾기</span></span><br><span class="line">        MineCounter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 매트릭스의 테두리 부분은 주위 개수가 다르기 때문에 인덱스를 지정해주어야함</span></span><br><span class="line">        <span class="comment"># 행 인덱스 지정</span></span><br><span class="line">        <span class="keyword">if</span> idx_row == <span class="number">0</span>:</span><br><span class="line">            idx_row_set = [idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">elif</span> idx_row == row<span class="number">-1</span>:</span><br><span class="line">            idx_row_set = [idx_row - <span class="number">1</span>, idx_row]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_row_set = [idx_row - <span class="number">1</span>, idx_row, idx_row + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 열 인덱스 지정</span></span><br><span class="line">        <span class="keyword">if</span> idx_col == <span class="number">0</span>:</span><br><span class="line">            idx_col_set = [idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">elif</span> idx_col == col<span class="number">-1</span>:</span><br><span class="line">            idx_col_set = [idx_col - <span class="number">1</span>, idx_col]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            idx_col_set = [idx_col - <span class="number">1</span>, idx_col, idx_col + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 지정한 인덱스 확인</span></span><br><span class="line">        print(idx_row_set)</span><br><span class="line">        print(idx_col_set)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 지정한 인덱스에 대해서 반복</span></span><br><span class="line">        <span class="keyword">for</span> mine_row <span class="keyword">in</span> idx_row_set:</span><br><span class="line">            <span class="keyword">for</span> mine_col <span class="keyword">in</span> idx_col_set:</span><br><span class="line">                print(<span class="string">"row: %d, col: %d"</span> % (idx_row, idx_col))</span><br><span class="line">                print(<span class="string">"mine_row: %d, mine_col: %d"</span> % (mine_row, mine_col))</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 자기 자신을 제외한 주위의 값을 확인해서 지뢰 개수 세기</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ((mine_row == idx_row) <span class="keyword">and</span> (mine_col == idx_col)):</span><br><span class="line">                    <span class="keyword">if</span> matrix[mine_row][mine_col]:</span><br><span class="line">                        MineCounter = MineCounter + <span class="number">1</span></span><br><span class="line">                        print(<span class="string">"Mine Counter: %d"</span> % (MineCounter))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 현재 인덱스에 지뢰 개수 넣기</span></span><br><span class="line">        MineCounterMat[idx_row][idx_col] = MineCounter</span><br><span class="line">        print(MineCounterMat)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/10/pythoncodefight-day19/" data-id="ck6f6hy720000y0482n058kfr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/08/pythoncodefight-day18/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PythonCodeFight-Day18</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/00-diary/">00_Diary</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/00-diary/dailydev/">DailyDev.</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/">01_Study</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/c/">C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/01-study/python/">Python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/99-etc/">99_ETC</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/99-etc/test/">Test</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/10/pythoncodefight-day19/">PythonCodeFight-Day19</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/08/pythoncodefight-day18/">PythonCodeFight-Day18</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/05/pythoncodefight-day17/">PythonCodeFight-Day17</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/04/pythoncodefight-day16/">PythonCodeFight-Day16</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/03/pythoncodefight-day15/">PythonCodeFight-Day15</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/" rel="tag">2d array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">Array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/can/" rel="tag">CAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codefight/" rel="tag">CodeFight</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codesignal/" rel="tag">CodeSignal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/" rel="tag">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">Pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rnn/" rel="tag">RNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/simulink/" rel="tag">Simulink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bubble-sort/" rel="tag">bubble sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/colab/" rel="tag">colab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/embedded-system/" rel="tag">embedded system</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/" rel="tag">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function/" rel="tag">function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index-slicing/" rel="tag">index slicing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/" rel="tag">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memset/" rel="tag">memset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pointer/" rel="tag">pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quick-sort/" rel="tag">quick sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/return/" rel="tag">return</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/" rel="tag">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/" rel="tag">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struct/" rel="tag">struct</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union/" rel="tag">union</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2d-array/" style="font-size: 10px;">2d array</a> <a href="/tags/array/" style="font-size: 15.71px;">Array</a> <a href="/tags/c/" style="font-size: 20px;">C</a> <a href="/tags/can/" style="font-size: 10px;">CAN</a> <a href="/tags/codefight/" style="font-size: 18.57px;">CodeFight</a> <a href="/tags/codesignal/" style="font-size: 18.57px;">CodeSignal</a> <a href="/tags/latex/" style="font-size: 10px;">LaTex</a> <a href="/tags/matlab/" style="font-size: 12.86px;">Matlab</a> <a href="/tags/pointer/" style="font-size: 12.86px;">Pointer</a> <a href="/tags/pytorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/python/" style="font-size: 18.57px;">Python</a> <a href="/tags/rnn/" style="font-size: 10px;">RNN</a> <a href="/tags/simulink/" style="font-size: 12.86px;">Simulink</a> <a href="/tags/array/" style="font-size: 14.29px;">array</a> <a href="/tags/bubble-sort/" style="font-size: 11.43px;">bubble sort</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/colab/" style="font-size: 10px;">colab</a> <a href="/tags/embedded-system/" style="font-size: 10px;">embedded system</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/function/" style="font-size: 17.14px;">function</a> <a href="/tags/index-slicing/" style="font-size: 10px;">index slicing</a> <a href="/tags/input/" style="font-size: 14.29px;">input</a> <a href="/tags/memset/" style="font-size: 10px;">memset</a> <a href="/tags/pointer/" style="font-size: 15.71px;">pointer</a> <a href="/tags/quick-sort/" style="font-size: 10px;">quick sort</a> <a href="/tags/return/" style="font-size: 10px;">return</a> <a href="/tags/sort/" style="font-size: 11.43px;">sort</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/struct/" style="font-size: 15.71px;">struct</a> <a href="/tags/union/" style="font-size: 10px;">union</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Sunbin Vincent Kim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
