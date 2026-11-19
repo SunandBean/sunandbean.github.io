@@ -20,7 +20,11 @@
   a { color: inherit; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  header { padding: 72px 0 40px; }
+  header { padding: 28px 0 40px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 44px; }
+  .topnav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+  .topnav a { color: #3d3b37; text-decoration: none; font-weight: 600; font-size: 14.5px; }
+  .topnav a:hover { color: #b4541b; }
   .mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .02em; color: #1d1c1a; text-decoration: none; }
   .sun { width: 28px; height: 28px; display: block; }
   h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.02; letter-spacing: -.03em; margin: 28px 0 14px; color: #1d1c1a; }
@@ -48,11 +52,11 @@
 
   footer { border-top: 1px solid #e6e6e6; padding: 28px 0 48px; color: #6f6b63; font-size: 14px; }
   footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-  footer nav a { margin-right: 16px; color: #3d3b37; text-decoration: none; font-weight: 600; }
-  footer nav a:hover { color: #b4541b; }
 
   @media (max-width: 760px) {
-    header { padding: 48px 0 28px; }
+    header { padding: 20px 0 28px; }
+    .topbar { padding-bottom: 28px; }
+    .topnav { gap: 6px 14px; }
     .grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -60,7 +64,15 @@
 <body>
 <div class="wrap">
   <header>
-    <a class="mark" href="/"><img class="sun" src="/favicon.svg?v=sun2" alt="" width="28" height="28">sunandbean</a>
+    <div class="topbar">
+      <a class="mark" href="/"><img class="sun" src="/favicon.svg?v=sun2" alt="" width="28" height="28">sunandbean</a>
+      <nav class="topnav" aria-label="Elsewhere">
+        <a href="https://github.com/SunandBean">GitHub</a>
+        <a href="https://huggingface.co/sunandbean">Hugging Face</a>
+        <a href="https://www.youtube.com/@paper2videoai">YouTube</a>
+        <a href="https://sunbin.kim">Blog</a>
+      </nav>
+    </div>
     <h1>Things I make</h1>
     <p class="lede">Tools and experiments by Sunbin Kim, mostly AI on my own hardware and motorsports. The longer stories behind them live on <a href="https://sunbin.kim">sunbin.kim</a>.</p>
   </header>
@@ -179,12 +191,6 @@
 
 <footer>
   <div class="wrap row">
-    <nav>
-      <a href="https://github.com/SunandBean">GitHub</a>
-      <a href="https://huggingface.co/sunandbean">Hugging Face</a>
-      <a href="https://www.youtube.com/@paper2videoai">YouTube</a>
-      <a href="https://sunbin.kim">Blog</a>
-    </nav>
     <span>© 2026 Sunbin Kim</span>
   </div>
 </footer>
