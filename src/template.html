@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico?v=sun2" sizes="any">
+<link rel="icon" href="/favicon.svg?v=sun2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=sun2">
+<title>sunandbean · Things I make</title>
+<meta name="description" content="Projects by Sunbin Kim: tools and experiments, mostly AI on my own hardware and motorsports.">
+<link rel="canonical" href="https://sunandbean.com/">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: #ffffff; }
+  body {
+    margin: 0; color: #1d1c1a; background: #ffffff;
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 28px 0 40px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 44px; }
+  .topnav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+  .topnav a { color: #3d3b37; text-decoration: none; font-weight: 600; font-size: 14.5px; }
+  .topnav a:hover { color: #b4541b; }
+  .mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .02em; color: #1d1c1a; text-decoration: none; }
+  .sun { width: 28px; height: 28px; display: block; }
+  h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.02; letter-spacing: -.03em; margin: 28px 0 14px; color: #1d1c1a; }
+  .lede { font-size: 19px; color: #55524c; max-width: 620px; margin: 0; }
+  .lede a { color: #b4541b; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; padding-bottom: 56px; }
+  .card { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .shot { aspect-ratio: 16 / 9; background: #f3f3f3; overflow: hidden; display: block; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot.top img { object-position: top left; }
+  .placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #8a857a; font-size: 14px; border-bottom: 1px dashed #d6d6d6; }
+  .body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .kicker { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #b4541b; }
+  h2 { font-size: 22px; letter-spacing: -.01em; margin: 0; color: #1d1c1a; }
+  .desc { margin: 0; color: #3d3b37; }
+  ul.facts { margin: 0; padding-left: 18px; color: #55524c; font-size: 14.5px; }
+  ul.facts li { margin: 2px 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+  .chip { font-size: 13.5px; font-weight: 600; text-decoration: none; padding: 6px 12px; border-radius: 999px; border: 1px solid #dcdcdc; color: #1d1c1a; background: #ffffff; }
+  .chip:hover { border-color: #b4541b; color: #b4541b; }
+  .chip.primary { background: #1d1c1a; color: #ffffff; border-color: #1d1c1a; }
+  .chip.primary:hover { background: #b4541b; border-color: #b4541b; color: #ffffff; }
+  .note { font-size: 13px; color: #8a857a; }
+  .meta { font-size: 12.5px; color: #8a8a8a; margin: 0; }
+
+  footer { border-top: 1px solid #e6e6e6; padding: 28px 0 48px; color: #6f6b63; font-size: 14px; }
+  footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  @media (max-width: 760px) {
+    header { padding: 20px 0 28px; }
+    .topbar { padding-bottom: 28px; }
+    .topnav { gap: 6px 14px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="topbar">
+      <a class="mark" href="/"><img class="sun" src="/favicon.svg?v=sun2" alt="" width="28" height="28">sunandbean</a>
+      <nav class="topnav" aria-label="Elsewhere">
+        <a href="https://github.com/SunandBean">GitHub</a>
+        <a href="https://huggingface.co/sunandbean">Hugging Face</a>
+        <a href="https://www.youtube.com/@paper2videoai">YouTube</a>
+        <a href="https://sunbin.kim">Blog</a>
+      </nav>
+    </div>
+    <h1>Things I make</h1>
+    <p class="lede">Tools and experiments by Sunbin Kim, mostly AI on my own hardware and motorsports. The longer stories behind them live on <a href="https://sunbin.kim">sunbin.kim</a>.</p>
+  </header>
+
+  <main class="grid">
+{{CARDS}}
+  </main>
+</div>
+
+<footer>
+  <div class="wrap row">
+    <span>© {{YEAR}} Sunbin Kim</span>
+    <span>Updated {{BUILT}}</span>
+  </div>
+</footer>
+{{ANALYTICS}}
+</body>
+</html>
